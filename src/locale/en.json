@@ -25,11 +25,6 @@
 			"spiel": ["Lorem Ipsum"]
 		}
 	},
-	"event": {
-		"title": "Upcoming Events",
-		"menu": "Events",
-		"bbb2027": { "title": "Berlin Barbershop Bash 2027" }
-	},
 	"hair": {
 		"title": "Looking for a Barber Shop?",
 		"spiel": [

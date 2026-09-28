@@ -5,7 +5,7 @@ const router = createRouter({
 	routes: [
 		{ path: '/', redirect: '/bash' },
 		{ path: '/chorus', component: () => import('../views/ChorusView.vue') },
-		{ path: '/event', component: () => import('../views/EventView.vue') },
+		{ path: '/event', redirect: '/bash' },
 		{ path: '/bash', component: () => import('../views/BashView.vue') },
 		{ path: '/hair', component: () => import('../views/HairView.vue') },
 	],
