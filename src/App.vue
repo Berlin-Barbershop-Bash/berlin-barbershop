@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import AppFooter from '@/views/AppFooter.vue'
-import AppHeader from '@/views/AppHeader.vue'
+import AppFooter from '@/component/AppFooter.vue'
+import AppHeader from '@/component/AppHeader.vue'
 import { ref } from 'vue'
 
 const headerHeight = ref<number>()
