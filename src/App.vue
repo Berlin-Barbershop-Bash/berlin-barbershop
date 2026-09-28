@@ -50,6 +50,8 @@ h1.title {
 		font-family: var(--header-text-font);
 		font-feature-settings: var(--font-feat-global);
 		text-transform: lowercase;
+
+		text-align: center;
 	}
 
 	p {
@@ -60,6 +62,7 @@ h1.title {
 
 	.v-img {
 		max-height: 480px;
+		max-width: 100%;
 	}
 
 	.v-btn {
