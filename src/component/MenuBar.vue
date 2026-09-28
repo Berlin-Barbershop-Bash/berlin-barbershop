@@ -37,6 +37,7 @@ const setLang = (loc: string) => (locale.value = loc)
 		flex-flow: row nowrap;
 		.v-btn {
 			flex-grow: 1;
+			text-transform: lowercase;
 		}
 	}
 }
