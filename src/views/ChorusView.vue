@@ -5,8 +5,7 @@ const { t, tm } = useI18n()
 </script>
 
 <template>
-	<div id="chorus-view">
-		<h1>{{ t('chorus.title') }}</h1>
+	<div id="chorus-view" class="content-page">
 		<v-container class="chorus-container">
 			<h2>{{ t('chorus.capitol.title') }}</h2>
 			<p v-for="(spiel, idx) in tm('chorus.capitol.spiel')" :key="idx">{{ spiel }}</p>
@@ -18,10 +17,4 @@ const { t, tm } = useI18n()
 	</div>
 </template>
 
-<style lang="scss">
-#chorus-view {
-	h1 {
-		text-align: center;
-	}
-}
-</style>
+<style lang="scss"></style>
