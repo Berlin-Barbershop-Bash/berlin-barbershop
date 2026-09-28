@@ -44,6 +44,9 @@ h1.title {
 	justify-content: center;
 	gap: 16px;
 	div.content-page-left {
+		.v-img {
+			max-height: 480px;
+		}
 		@media screen and (min-width: 800px) {
 			width: calc(50% - 8px);
 		}
