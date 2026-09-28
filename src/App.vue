@@ -22,6 +22,7 @@ const setHeight = (v: number | undefined) => (headerHeight.value = v)
 	margin-bottom: 0;
 	margin-left: 0;
 	margin-right: 0;
+	max-width: none;
 }
 h1.title {
 	display: block;
@@ -29,5 +30,29 @@ h1.title {
 	text-transform: lowercase;
 	margin: 0;
 	padding: 0;
+}
+.content-page {
+	display: flex;
+	width: 100%;
+	flex-flow: row wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 16px;
+	div.content-page-left {
+		@media screen and (min-width: 800px) {
+			width: calc(50% - 8px);
+		}
+		@media screen and (max-width: 799px) {
+			width: 100%;
+		}
+	}
+	div.content-page-right {
+		@media screen and (min-width: 800px) {
+			width: calc(50% - 8px);
+		}
+		@media screen and (max-width: 799px) {
+			width: 100%;
+		}
+	}
 }
 </style>
