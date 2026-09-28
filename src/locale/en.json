@@ -40,6 +40,8 @@
 		]
 	},
 	"home": {
+		"header": "Berlin",
+		"footer": "Barbershop",
 		"title": "Berlin Barbershop",
 		"menu": "Home",
 		"spiel": ["Welcome, dear barbershopper, to Berlin!"]

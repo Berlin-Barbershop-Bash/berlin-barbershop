@@ -11,7 +11,7 @@ const setLang = (loc: string) => (locale.value = loc)
 </script>
 
 <template>
-	<v-app-bar flat class="toolbar">
+	<div class="menu">
 		<div class="left-container">
 			<v-btn href="/">{{ t('home.menu') }}</v-btn>
 			<v-btn href="/bash">{{ t('bash.menu') }}</v-btn>
@@ -24,16 +24,22 @@ const setLang = (loc: string) => (locale.value = loc)
 				<v-btn @click="() => setLang(lang.value)">{{ lang.title }}</v-btn>
 			</template>
 		</div>
-	</v-app-bar>
+	</div>
 </template>
 
 <style lang="scss">
-.toolbar {
-	.v-toolbar__content {
+.menu {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+	.left-container {
+		flex-grow: 1;
 		display: flex;
 		flex-flow: row nowrap;
-		justify-content: space-between;
-		align-items: center;
+		.v-btn {
+			flex-grow: 1;
+		}
 	}
 }
 </style>
