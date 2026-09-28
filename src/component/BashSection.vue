@@ -6,7 +6,7 @@ const { t, tm } = useI18n()
 </script>
 
 <template>
-	<div id="bash-view" class="content-page">
+	<div id="bash-section" class="content-page">
 		<div class="content-page-left">
 			<v-img :src="signedMusic" />
 		</div>

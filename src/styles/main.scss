@@ -42,17 +42,18 @@
 	--dark-color: #331528;
 	--bright-color: #e8a600;
 	--pale-color: #f6ebd6;
+	--pale-ish-color: #e7d9c0;
 
 	--header-background-color: var(--dark-color);
 	--header-text-color: var(--bright-color);
 
-	--menu-background-color: var(--pale-color);
-	--menu-text-color: var(--dark-color);
+	--ticker-background-color: var(--bright-color);
+	--ticker-text-color: var(--dark-color);
 
 	--content-background-color: var(--pale-color);
 	--content-text-color: var(--dark-color);
 
-	--content-button-color: var(--bright-color);
+	--content-button-color: var(--pale-ish-color);
 	--content-button-text-color: var(--content-text-color);
 
 	// FONTS

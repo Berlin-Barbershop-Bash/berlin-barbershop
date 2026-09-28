@@ -7,7 +7,8 @@
 			"We appreciate your patience as we work to plan this event.",
 			"If you're interested in joining us, please fill out our interest form and sign up for our newsletter below!"
 		],
-		"interest_form": "Interest Form"
+		"interest_form": "Interest Form",
+		"ticker": "Happening again next year!"
 	},
 	"chorus": {
 		"menu": "Choruses",
@@ -27,5 +28,5 @@
 			"Come hear us sometime!"
 		]
 	},
-	"home": { "header": "Berlin", "footer": "Barbershop" }
+	"home": { "berlin": "Berlin", "barbershop": "Barbershop", "bash": "Bash" }
 }

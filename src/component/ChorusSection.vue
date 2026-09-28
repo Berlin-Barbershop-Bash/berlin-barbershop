@@ -6,14 +6,14 @@ const { t, tm } = useI18n()
 
 <template>
 	<div id="chorus-view" class="content-page">
-		<v-container class="chorus-container">
-			<h2>{{ t('chorus.capitol.title') }}</h2>
-			<p v-for="(spiel, idx) in tm('chorus.capitol.spiel')" :key="idx">{{ spiel }}</p>
-		</v-container>
-		<v-container class="chorus-container">
-			<h2>{{ t('chorus.wibs.title') }}</h2>
+		<div class="content-page-left">
 			<p v-for="(spiel, idx) in tm('chorus.wibs.spiel')" :key="idx">{{ spiel }}</p>
-		</v-container>
+			<h2>{{ t('chorus.wibs.title') }}</h2>
+		</div>
+		<div class="content-page-right">
+			<p v-for="(spiel, idx) in tm('chorus.capitol.spiel')" :key="idx">{{ spiel }}</p>
+			<h2>{{ t('chorus.capitol.title') }}</h2>
+		</div>
 	</div>
 </template>
 
