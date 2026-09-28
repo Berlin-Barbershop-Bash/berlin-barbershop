@@ -19,22 +19,38 @@ const { t } = useI18n()
 </template>
 
 <style lang="scss">
+h1.title,
+h2.subtitle {
+	font-family: var(--header-text-font);
+	font-weight: var(--header-text-weight);
+	font-feature-settings: var(--font-feat-polymath);
+	font-variation-settings: var(--font-var-polymath);
+	text-transform: lowercase;
+
+	text-align: center;
+	margin: 0;
+	padding: 0;
+}
+
 h1.title {
 	background-color: var(--header-background-color);
 	color: var(--header-text-color);
 
-	font-family: var(--header-text-font);
 	font-size: var(--header-text-size);
-	font-weight: var(--header-text-weight);
-	font-feature-settings: var(--font-feat-polymath);
-	font-variation-settings: var(--font-var-polymath);
 	line-height: var(--header-line-height);
+}
 
-	display: block;
-	text-align: center;
-	text-transform: lowercase;
-	margin: 0;
-	padding: 0;
+h2.subtitle {
+	font-size: var(--sub-header-text-size);
+	line-height: var(--sub-header-line-height);
+
+	a {
+		text-decoration: none;
+		color: inherit;
+	}
+	a:hover {
+		text-decoration: underline;
+	}
 }
 
 .content-page {
@@ -46,28 +62,6 @@ h1.title {
 
 	padding: 32px 94px;
 	gap: 24px;
-
-	h2.subtitle {
-		font-family: var(--sub-header-text-font);
-		font-size: var(--sub-header-text-size);
-		font-weight: var(--sub-header-text-weight);
-		font-feature-settings: var(--font-feat-polymath);
-		font-variation-settings: var(--font-var-polymath);
-		line-height: var(--sub-header-line-height);
-		text-transform: lowercase;
-		text-align: center;
-
-		padding: 0;
-		margin: 0;
-
-		a {
-			text-decoration: none;
-			color: inherit;
-		}
-		a:hover {
-			text-decoration: underline;
-		}
-	}
 
 	p {
 		font-family: var(--content-text-font);
