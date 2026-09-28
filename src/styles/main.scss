@@ -48,6 +48,8 @@
 	--header-background-color: var(--dark-color);
 	--header-text-color: var(--bright-color);
 
+	--language-option-text-color: var(--pale-color);
+
 	--ticker-background-color: var(--bright-color);
 	--ticker-text-color: var(--dark-color);
 
@@ -62,6 +64,11 @@
 	--header-text-size: 155px;
 	--header-text-weight: 800;
 	--header-line-height: 192px;
+
+	--language-option-text-font: var(--font-sans);
+	--language-option-text-size: 20px;
+	--language-option-text-weight: 400;
+	--language-option-line-height: 22px;
 
 	--sub-header-text-font: var(--font-polymath);
 	--sub-header-text-size: 45px;
