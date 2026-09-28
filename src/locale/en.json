@@ -12,14 +12,8 @@
 	},
 	"chorus": {
 		"menu": "Choruses",
-		"capitol": {
-			"title": "Capitol Chords",
-			"spiel": ["Lorem Ipsum"]
-		},
-		"wibs": {
-			"title": "Women in Black",
-			"spiel": ["Lorem Ipsum"]
-		}
+		"capitol": { "title": "Capitol Chords" },
+		"wibs": { "title": "Women in Black" }
 	},
 	"hair": {
 		"title": "Looking for a Barber Shop?",

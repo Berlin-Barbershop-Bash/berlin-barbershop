@@ -59,6 +59,14 @@ h1.title {
 
 		padding: 0;
 		margin: 0;
+
+		a {
+			text-decoration: none;
+			color: inherit;
+		}
+		a:hover {
+			text-decoration: underline;
+		}
 	}
 
 	p {
