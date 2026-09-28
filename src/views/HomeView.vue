@@ -44,7 +44,7 @@ h1.title {
 	align-items: center;
 	justify-content: center;
 
-	padding: 32px;
+	padding: 32px 94px;
 	gap: 24px;
 
 	h2.subtitle {
@@ -78,7 +78,6 @@ h1.title {
 	}
 
 	.v-img {
-		max-height: 480px;
 		max-width: 100%;
 	}
 

@@ -18,7 +18,7 @@ const setLang = (loc: string) => (locale.value = loc)
 
 <style lang="scss">
 #language-container {
-	position: fixed;
+	position: absolute;
 	right: 0;
 	top: 20px;
 
