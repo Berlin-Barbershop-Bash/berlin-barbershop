@@ -24,9 +24,9 @@ const setFooterHeight = (v: number | undefined) => (footerHeight.value = v)
 
 <style lang="scss">
 :root {
-	--dark-color: purple;
-	--bright-color: yellow;
-	--pale-color: grey;
+	--dark-color: #331528;
+	--bright-color: #e8a600;
+	--pale-color: #f6ebd6;
 
 	--header-background-color: var(--dark-color);
 	--header-text-color: var(--bright-color);
