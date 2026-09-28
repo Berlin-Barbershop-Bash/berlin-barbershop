@@ -4,16 +4,21 @@ import AppHeader from '@/component/AppHeader.vue'
 import { ref } from 'vue'
 
 const headerHeight = ref<number>()
-const setHeight = (v: number | undefined) => (headerHeight.value = v)
+const setHeaderHeight = (v: number | undefined) => (headerHeight.value = v)
+const footerHeight = ref<number>()
+const setFooterHeight = (v: number | undefined) => (footerHeight.value = v)
 </script>
 
 <template>
 	<v-app>
-		<app-header :set-height="setHeight" />
-		<v-container class="router" :style="{ marginTop: `${headerHeight}px` }">
+		<app-header :set-header-height="setHeaderHeight" />
+		<v-container
+			class="router"
+			:style="{ marginTop: `${headerHeight}px`, marginBottom: `${footerHeight}px` }"
+		>
 			<router-view />
 		</v-container>
-		<app-footer />
+		<app-footer :set-footer-height="setFooterHeight" />
 	</v-app>
 </template>
 
