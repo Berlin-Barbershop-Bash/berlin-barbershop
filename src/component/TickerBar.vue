@@ -28,6 +28,11 @@ const asdf = Array(20).fill(0)
 	background-color: var(--ticker-background-color);
 	color: var(--ticker-text-color);
 
+	font-family: var(--ticker-text-font);
+	font-size: var(--ticker-text-size);
+	font-weight: var(--ticker-text-weight);
+	line-height: var(--ticker-line-height);
+
 	display: flex;
 	flex-flow: row nowrap;
 	overflow-y: hidden;
