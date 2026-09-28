@@ -50,7 +50,7 @@ h1.title {
 	padding: 32px;
 	gap: 24px;
 
-	h2 {
+	h2.subtitle {
 		font-family: var(--sub-header-text-font);
 		font-size: var(--sub-header-text-size);
 		font-weight: var(--sub-header-text-weight);
