@@ -50,6 +50,7 @@ h2.subtitle {
 	}
 	a:hover {
 		text-decoration: underline;
+		text-decoration-thickness: 4px;
 	}
 }
 
