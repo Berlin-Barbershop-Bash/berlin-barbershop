@@ -1,12 +1,8 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { locale, t, availableLocales } = useI18n()
 
-const languages = computed(() =>
-	availableLocales.map((loc: string) => ({ title: t(`locale.lang_${loc}`), value: loc })),
-)
 const setLang = (loc: string) => (locale.value = loc)
 </script>
 
@@ -16,10 +12,10 @@ const setLang = (loc: string) => (locale.value = loc)
 			<v-btn href="/bash">{{ t('bash.menu') }}</v-btn>
 			<v-btn href="/chorus">{{ t('chorus.menu') }}</v-btn>
 		</div>
-		<div class="right-container" v-if="languages.length > 1">
-			<template v-for="(lang, idx) in languages" :key="idx">
+		<div class="right-container" v-if="availableLocales.length > 1">
+			<template v-for="(lang, idx) in availableLocales" :key="idx">
 				<template v-if="idx > 0">|</template>
-				<v-btn @click="() => setLang(lang.value)">{{ lang.title }}</v-btn>
+				<v-btn @click="() => setLang(lang)">{{ lang }}</v-btn>
 			</template>
 		</div>
 	</div>

@@ -1,8 +1,4 @@
 {
-	"locale": {
-		"lang_de": "DE",
-		"lang_en": "EN"
-	},
 	"bash": {
 		"menu": "The Bash",
 		"spiel": [
