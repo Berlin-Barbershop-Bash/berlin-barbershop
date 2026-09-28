@@ -13,12 +13,10 @@ const setLang = (loc: string) => (locale.value = loc)
 <template>
 	<div class="menu">
 		<div class="left-container">
-			<v-btn href="/">{{ t('home.menu') }}</v-btn>
 			<v-btn href="/bash">{{ t('bash.menu') }}</v-btn>
 			<v-btn href="/chorus">{{ t('chorus.menu') }}</v-btn>
-			<v-btn href="/event">{{ t('event.menu') }}</v-btn>
 		</div>
-		<div class="right-container">
+		<div class="right-container" v-if="languages.length > 1">
 			<template v-for="(lang, idx) in languages" :key="idx">
 				<template v-if="idx > 0">|</template>
 				<v-btn @click="() => setLang(lang.value)">{{ lang.title }}</v-btn>
