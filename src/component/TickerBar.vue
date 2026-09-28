@@ -38,6 +38,8 @@ const asdf = Array(200).fill(0)
 	overflow-y: clip;
 	gap: 8px;
 
+	padding: 10px 0;
+
 	.ticker-item {
 		white-space: nowrap;
 		animation: scroll-left 6s linear infinite;
