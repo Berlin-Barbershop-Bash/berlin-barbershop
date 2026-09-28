@@ -46,7 +46,9 @@ h1.title {
 	flex-flow: row wrap;
 	align-items: center;
 	justify-content: center;
-	gap: 16px;
+
+	padding: 32px;
+	gap: 24px;
 
 	h2 {
 		font-family: var(--header-text-font);
@@ -62,6 +64,7 @@ h1.title {
 		font-family: var(--content-text-font);
 		font-size: var(--content-text-size);
 		font-weight: var(--content-text-weight);
+		line-height: var(--content-line-height);
 	}
 
 	.v-img {
@@ -80,7 +83,7 @@ h1.title {
 
 	div.content-page-left {
 		@media screen and (min-width: 800px) {
-			width: calc(50% - 8px);
+			width: calc(50% - 12px);
 		}
 		@media screen and (max-width: 799px) {
 			width: 100%;
@@ -89,7 +92,7 @@ h1.title {
 
 	div.content-page-right {
 		@media screen and (min-width: 800px) {
-			width: calc(50% - 8px);
+			width: calc(50% - 12px);
 		}
 		@media screen and (max-width: 799px) {
 			width: 100%;
