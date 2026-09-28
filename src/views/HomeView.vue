@@ -24,7 +24,8 @@ h1.title {
 	font-family: var(--header-text-font);
 	font-size: var(--header-text-size);
 	font-weight: var(--header-text-weight);
-	font-feature-settings: var(--font-feat-global);
+	font-feature-settings: var(--font-feat-polymath);
+	font-variation-settings: var(--font-var-polymath);
 
 	display: block;
 	text-align: center;

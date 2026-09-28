@@ -29,7 +29,9 @@ h1.title {
 	font-family: var(--header-text-font);
 	font-size: var(--header-text-size);
 	font-weight: var(--header-text-weight);
-	font-feature-settings: var(--font-feat-global);
+	font-feature-settings: var(--font-feat-polymath);
+	font-variation-settings: var(--font-var-polymath);
+	line-height: var(--header-line-height);
 
 	display: block;
 	text-align: center;
@@ -48,7 +50,9 @@ h1.title {
 
 	h2 {
 		font-family: var(--header-text-font);
-		font-feature-settings: var(--font-feat-global);
+		font-feature-settings: var(--font-feat-polymath);
+		font-variation-settings: var(--font-var-polymath);
+
 		text-transform: lowercase;
 
 		text-align: center;

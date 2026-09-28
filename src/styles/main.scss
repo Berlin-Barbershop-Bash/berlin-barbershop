@@ -32,7 +32,8 @@
 }
 
 :root {
-	--font-feat-global: 'ss08' 1, 'ss09' 1, 'ss11' 1, 'ss14' 1, 'ss15' 1, 'ss17' 1;
+	--font-feat-polymath: 'ss08' 1, 'ss09' 1, 'ss11' 1, 'ss14' 1, 'ss15' 1, 'ss17' 1;
+	--font-var-polymath: 'opsz' 60;
 	--font-polymath: 'Polymath Var', sans-serif;
 	--font-sans: 'Default Sans', sans-serif;
 	--font-mono: 'Default Sans Mono', monospace;
@@ -58,8 +59,9 @@
 
 	// FONTS
 	--header-text-font: var(--font-polymath);
-	--header-text-size: 40px;
+	--header-text-size: 155px;
 	--header-text-weight: 800;
+	--header-line-height: 192px;
 
 	--menu-text-font: var(--font-polymath);
 	--menu-text-size: 24px;

@@ -12,7 +12,8 @@ defineProps<{ href: string; title: string; selected: boolean }>()
 	font-family: var(--menu-text-font);
 	font-size: var(--menu-text-size);
 	font-weight: var(--menu-text-weight);
-	font-feature-settings: var(--font-feat-global);
+	font-feature-settings: var(--font-feat-polymath);
+	font-variation-settings: var(--font-var-polymath);
 }
 .menu-button.selected {
 	text-decoration: underline;
