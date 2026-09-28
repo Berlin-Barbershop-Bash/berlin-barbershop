@@ -63,17 +63,23 @@
 	--header-text-weight: 800;
 	--header-line-height: 192px;
 
+	--sub-header-text-font: var(--font-polymath);
+	--sub-header-text-size: 45px;
+	--sub-header-text-weight: 800;
+	--sub-header-line-height: 56px;
+
 	--ticker-text-font: var(--font-sans);
 	--ticker-text-size: 20px;
 	--ticker-text-weight: 400;
 	--ticker-line-height: 22px;
 
 	--content-text-font: var(--font-sans);
-	--content-text-size: 15px;
+	--content-text-size: 25px;
 	--content-text-weight: 400;
-	--content-line-height: 17px;
+	--content-line-height: 28px;
 
 	--content-button-text-font: var(--font-sans-mono);
-	--content-button-text-size: 16px;
+	--content-button-text-size: 30px;
 	--content-button-text-weight: 400;
+	--content-button-line-height: 34px;
 }

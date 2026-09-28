@@ -51,13 +51,17 @@ h1.title {
 	gap: 24px;
 
 	h2 {
-		font-family: var(--header-text-font);
+		font-family: var(--sub-header-text-font);
+		font-size: var(--sub-header-text-size);
+		font-weight: var(--sub-header-text-weight);
 		font-feature-settings: var(--font-feat-polymath);
 		font-variation-settings: var(--font-var-polymath);
-
+		line-height: var(--sub-header-line-height);
 		text-transform: lowercase;
-
 		text-align: center;
+
+		padding: 0;
+		margin: 0;
 	}
 
 	p {
@@ -65,6 +69,15 @@ h1.title {
 		font-size: var(--content-text-size);
 		font-weight: var(--content-text-weight);
 		line-height: var(--content-line-height);
+
+		padding: 0;
+		margin: 0;
+	}
+
+	.spiel-container {
+		display: flex;
+		flex-flow: column nowrap;
+		gap: 24px;
 	}
 
 	.v-img {
@@ -79,6 +92,9 @@ h1.title {
 		font-family: var(--content-button-text-font);
 		font-size: var(--content-button-text-size);
 		font-weight: var(--content-button-text-weight);
+		line-height: var(--content-button-line-height);
+
+		text-transform: lowercase;
 	}
 
 	div.content-page-left {

@@ -11,10 +11,12 @@ const { t, tm } = useI18n()
 			<v-img :src="majorsFromBajor" />
 		</div>
 		<div class="content-page-right">
-			<p v-for="(spiel, idx) in tm('bash.spiel')" :key="idx">{{ spiel }}</p>
-			<v-btn>
-				{{ t('bash.interest_form') }}
-			</v-btn>
+			<div class="spiel-container">
+				<p v-for="(spiel, idx) in tm('bash.spiel')" :key="idx">{{ spiel }}</p>
+				<v-btn>
+					{{ t('bash.interest_form') }}
+				</v-btn>
+			</div>
 		</div>
 	</div>
 </template>
