@@ -23,36 +23,6 @@ const setFooterHeight = (v: number | undefined) => (footerHeight.value = v)
 </template>
 
 <style lang="scss">
-:root {
-	--dark-color: #331528;
-	--bright-color: #e8a600;
-	--pale-color: #f6ebd6;
-
-	--header-background-color: var(--dark-color);
-	--header-text-color: var(--bright-color);
-	--header-text-font: 'Roboto', sans-serif;
-	--header-text-size: 40px;
-	--header-text-weight: 900;
-
-	--menu-background-color: var(--pale-color);
-	--menu-text-color: var(--dark-color);
-	--menu-text-font: 'Roboto', sans-serif;
-	--menu-text-size: 24px;
-	--menu-text-weight: 900;
-
-	--content-background-color: var(--pale-color);
-	--content-text-color: var(--dark-color);
-	--content-text-font: 'Courier New', monospace;
-	--content-text-size: 16px;
-	--content-text-weight: 400;
-
-	--content-button-color: var(--bright-color);
-	--content-button-text-color: var(--content-text-color);
-	--content-button-text-font: 'Courier New', monospace;
-	--content-button-text-size: 16px;
-	--content-button-text-weight: 400;
-}
-
 .application-container {
 	background-color: var(--content-background-color);
 }
@@ -71,6 +41,7 @@ h1.title {
 	font-family: var(--header-text-font);
 	font-size: var(--header-text-size);
 	font-weight: var(--header-text-weight);
+	font-feature-settings: var(--font-feat-global);
 
 	display: block;
 	text-align: center;

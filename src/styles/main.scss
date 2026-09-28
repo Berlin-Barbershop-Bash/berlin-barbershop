@@ -22,8 +22,53 @@
 	font-display: swap;
 }
 
+@font-face {
+	font-family: 'Polymath Var';
+	src: url('../assets/fonts/PolymathVar.woff2') format('woff2');
+	font-weight: 800;
+	font-optical-sizing: 60;
+	font-style: normal;
+	font-display: swap;
+}
+
 :root {
+	--font-feat-global: 'ss08' 1, 'ss09' 1, 'ss11' 1, 'ss14' 1, 'ss15' 1, 'ss17' 1;
+	--font-polymath: 'Polymath Var', sans-serif;
 	--font-sans: 'Default Sans', sans-serif;
 	--font-mono: 'Default Sans Mono', monospace;
 	font-synthesis: none;
+
+	// COLORS
+	--dark-color: #331528;
+	--bright-color: #e8a600;
+	--pale-color: #f6ebd6;
+
+	--header-background-color: var(--dark-color);
+	--header-text-color: var(--bright-color);
+
+	--menu-background-color: var(--pale-color);
+	--menu-text-color: var(--dark-color);
+
+	--content-background-color: var(--pale-color);
+	--content-text-color: var(--dark-color);
+
+	--content-button-color: var(--bright-color);
+	--content-button-text-color: var(--content-text-color);
+
+	// FONTS
+	--header-text-font: var(--font-polymath);
+	--header-text-size: 40px;
+	--header-text-weight: 800;
+
+	--menu-text-font: var(--font-polymath);
+	--menu-text-size: 24px;
+	--menu-text-weight: 900;
+
+	--content-text-font: var(--font-sans);
+	--content-text-size: 16px;
+	--content-text-weight: 400;
+
+	--content-button-text-font: var(--font-sans-mono);
+	--content-button-text-size: 16px;
+	--content-button-text-weight: 400;
 }
