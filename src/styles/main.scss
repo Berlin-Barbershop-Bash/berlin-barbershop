@@ -61,30 +61,55 @@
 
 	// FONTS
 	--header-text-font: var(--font-polymath);
-	--header-text-size: 155px;
 	--header-text-weight: 800;
-	--header-line-height: 192px;
 
 	--language-option-text-font: var(--font-sans);
-	--language-option-text-size: 20px;
 	--language-option-text-weight: 400;
-	--language-option-line-height: 22px;
 
+	--ticker-text-font: var(--font-mono);
+	--ticker-text-weight: 400;
+
+	--content-text-font: var(--font-sans);
+	--content-text-weight: 400;
+
+	--content-button-text-font: var(--font-mono);
+	--content-button-text-weight: 800;
+
+	// SIZES
+	--header-text-size: 155px;
+	--header-line-height: 192px;
 	--sub-header-text-size: 45px;
 	--sub-header-line-height: 56px;
 
-	--ticker-text-font: var(--font-mono);
+	--language-option-text-size: 20px;
+	--language-option-line-height: 22px;
+
 	--ticker-text-size: 20px;
-	--ticker-text-weight: 400;
 	--ticker-line-height: 22px;
 
-	--content-text-font: var(--font-sans);
 	--content-text-size: 25px;
-	--content-text-weight: 400;
 	--content-line-height: 28px;
 
-	--content-button-text-font: var(--font-mono);
 	--content-button-text-size: 30px;
-	--content-button-text-weight: 800;
 	--content-button-line-height: 34px;
+
+	@media screen and (max-width: 800px) {
+		--header-text-size: 55px;
+		--header-line-height: 68px;
+		--sub-header-text-size: 30px;
+		--sub-header-line-height: 37px;
+
+		// TODO
+		--language-option-text-size: 15px;
+		--language-option-line-height: 17px;
+
+		--ticker-text-size: 15px;
+		--ticker-line-height: 17px;
+
+		--content-text-size: 15px;
+		--content-line-height: 17px;
+
+		--content-button-text-size: 20px;
+		--content-button-line-height: 22px;
+	}
 }

@@ -20,7 +20,7 @@ const setLang = (loc: string) => (locale.value = loc)
 #language-container {
 	position: absolute;
 	right: 0;
-	top: 20px;
+	top: 10px;
 
 	.language-option {
 		font-family: var(--language-option-text-font);
