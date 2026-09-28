@@ -1,7 +1,7 @@
 <script setup lang="ts">
 defineProps<{ title: string }>()
 
-const asdf = Array(20).fill(0)
+const asdf = Array(200).fill(0)
 </script>
 
 <template>
@@ -35,7 +35,7 @@ const asdf = Array(20).fill(0)
 
 	display: flex;
 	flex-flow: row nowrap;
-	overflow-y: hidden;
+	overflow-y: clip;
 	gap: 8px;
 
 	.ticker-item {
