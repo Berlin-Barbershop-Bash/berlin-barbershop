@@ -1,16 +1,19 @@
 <script setup lang="ts">
+import MenuButton from '@/component/MenuButton.vue'
 import { useI18n } from 'vue-i18n'
+import { useRoute } from 'vue-router'
 
 const { locale, t, availableLocales } = useI18n()
-
 const setLang = (loc: string) => (locale.value = loc)
+
+const route = useRoute()
 </script>
 
 <template>
 	<div class="menu">
 		<div class="left-container">
-			<v-btn href="/bash">{{ t('bash.menu') }}</v-btn>
-			<v-btn href="/chorus">{{ t('chorus.menu') }}</v-btn>
+			<menu-button href="/bash" :title="t('bash.menu')" :selected="route.path == '/bash'" />
+			<menu-button href="/chorus" :title="t('chorus.menu')" :selected="route.path == '/chorus'" />
 		</div>
 		<div class="right-container" v-if="availableLocales.length > 1">
 			<template v-for="(lang, idx) in availableLocales" :key="idx">
@@ -31,9 +34,8 @@ const setLang = (loc: string) => (locale.value = loc)
 		flex-grow: 1;
 		display: flex;
 		flex-flow: row nowrap;
-		.v-btn {
+		.menu-button {
 			flex-grow: 1;
-			text-transform: lowercase;
 		}
 	}
 }
