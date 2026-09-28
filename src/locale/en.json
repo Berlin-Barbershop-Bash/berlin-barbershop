@@ -4,16 +4,14 @@
 		"lang_en": "EN"
 	},
 	"bash": {
-		"title": "Berlin Barbershop Bash 2027",
-		"menu": "BBB 2027",
+		"menu": "The Bash",
 		"spiel": [
 			"After the success of the first Berlin Barbershop Bash, we will be holding a second in 2027!",
 			"We will test out a 48-hour format in 2027, and look forward to seeing how the longer deadline shapes the event.",
 			"We appreciate your patience as we work to plan this event.",
 			"If you're interested in joining us, please fill out our interest form and sign up for our newsletter below!"
 		],
-		"interest_form": "Interest Form",
-		"newsletter": "Newsletter"
+		"interest_form": "Interest Form"
 	},
 	"chorus": {
 		"title": "Choruses",

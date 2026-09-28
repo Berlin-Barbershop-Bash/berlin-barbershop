@@ -5,21 +5,12 @@ const { t, tm } = useI18n()
 </script>
 
 <template>
-	<div id="bash-view">
-		<h1>{{ t('bash.title') }}</h1>
+	<div id="bash-view" class="content-page">
 		<p v-for="(spiel, idx) in tm('bash.spiel')" :key="idx">{{ spiel }}</p>
-		<p>
-			<a>{{ t('bash.interest_form') }}</a>
-			<br />
-			<a>{{ t('bash.newsletter') }}</a>
-		</p>
+		<v-btn>
+			{{ t('bash.interest_form') }}
+		</v-btn>
 	</div>
 </template>
 
-<style lang="scss">
-#bash-view {
-	h1 {
-		text-align: center;
-	}
-}
-</style>
+<style lang="scss"></style>
