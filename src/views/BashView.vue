@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import signedMusic from '@/asset/signed-music.jpg'
+import signedMusic from '@/assets/images/signed-music.jpg'
 import { useI18n } from 'vue-i18n'
 
 const { t, tm } = useI18n()
