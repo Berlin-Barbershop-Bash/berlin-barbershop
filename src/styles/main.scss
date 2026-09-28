@@ -17,7 +17,7 @@
 @font-face {
 	font-family: 'Default Sans Mono';
 	src: url('../assets/fonts/default-sans-mono-book.woff2') format('woff2');
-	font-weight: 400;
+	font-weight: 800;
 	font-style: normal;
 	font-display: swap;
 }
@@ -78,8 +78,8 @@
 	--content-text-weight: 400;
 	--content-line-height: 28px;
 
-	--content-button-text-font: var(--font-sans-mono);
+	--content-button-text-font: var(--font-mono);
 	--content-button-text-size: 30px;
-	--content-button-text-weight: 400;
+	--content-button-text-weight: 800;
 	--content-button-line-height: 34px;
 }

@@ -94,7 +94,12 @@ h1.title {
 		font-weight: var(--content-button-text-weight);
 		line-height: var(--content-button-line-height);
 
+		border-radius: 40px;
+		padding: 4px 20px;
+
 		text-transform: lowercase;
+
+		width: fit-content;
 	}
 
 	div.content-page-left {
