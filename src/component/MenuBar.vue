@@ -26,6 +26,9 @@ const route = useRoute()
 
 <style lang="scss">
 .menu {
+	background-color: var(--menu-background-color);
+	color: var(--menu-text-color);
+
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: space-between;

@@ -10,7 +10,7 @@ const setFooterHeight = (v: number | undefined) => (footerHeight.value = v)
 </script>
 
 <template>
-	<v-app>
+	<v-app class="application-container">
 		<app-header :set-header-height="setHeaderHeight" />
 		<v-container
 			class="router"
@@ -23,13 +23,37 @@ const setFooterHeight = (v: number | undefined) => (footerHeight.value = v)
 </template>
 
 <style lang="scss">
+:root {
+	--dark-color: purple;
+	--bright-color: yellow;
+	--pale-color: grey;
+
+	--header-background-color: var(--dark-color);
+	--header-text-color: var(--bright-color);
+
+	--menu-background-color: var(--pale-color);
+	--menu-text-color: var(--dark-color);
+
+	--content-background-color: var(--pale-color);
+	--content-text-color: var(--dark-color);
+	--content-button-color: var(--bright-color);
+}
+
+.application-container {
+	background-color: var(--content-background-color);
+}
 .router {
 	margin-bottom: 0;
 	margin-left: 0;
 	margin-right: 0;
 	max-width: none;
+	background-color: var(--content-background-color);
+	color: var(--content-text-color);
 }
 h1.title {
+	background-color: var(--header-background-color);
+	color: var(--header-text-color);
+
 	display: block;
 	text-align: center;
 	text-transform: lowercase;
@@ -43,6 +67,7 @@ h1.title {
 	align-items: center;
 	justify-content: center;
 	gap: 16px;
+
 	div.content-page-left {
 		.v-img {
 			max-height: 480px;
@@ -54,6 +79,7 @@ h1.title {
 			width: 100%;
 		}
 	}
+
 	div.content-page-right {
 		@media screen and (min-width: 800px) {
 			width: calc(50% - 8px);
@@ -61,6 +87,11 @@ h1.title {
 		@media screen and (max-width: 799px) {
 			width: 100%;
 		}
+	}
+
+	.v-btn {
+		background-color: var(--content-button-color);
+		color: var(--content-text-color);
 	}
 }
 </style>
