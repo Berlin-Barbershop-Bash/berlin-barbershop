@@ -9,6 +9,9 @@ defineProps<{ href: string; title: string; selected: boolean }>()
 <style lang="scss">
 .menu-button {
 	text-transform: lowercase;
+	font-family: var(--menu-text-font);
+	font-size: var(--menu-text-size);
+	font-weight: var(--menu-text-weight);
 }
 .menu-button.selected {
 	text-decoration: underline;

@@ -30,13 +30,27 @@ const setFooterHeight = (v: number | undefined) => (footerHeight.value = v)
 
 	--header-background-color: var(--dark-color);
 	--header-text-color: var(--bright-color);
+	--header-text-font: 'Roboto', sans-serif;
+	--header-text-size: 40px;
+	--header-text-weight: 900;
 
 	--menu-background-color: var(--pale-color);
 	--menu-text-color: var(--dark-color);
+	--menu-text-font: 'Roboto', sans-serif;
+	--menu-text-size: 24px;
+	--menu-text-weight: 900;
 
 	--content-background-color: var(--pale-color);
 	--content-text-color: var(--dark-color);
+	--content-text-font: 'Courier New', monospace;
+	--content-text-size: 16px;
+	--content-text-weight: 400;
+
 	--content-button-color: var(--bright-color);
+	--content-button-text-color: var(--content-text-color);
+	--content-button-text-font: 'Courier New', monospace;
+	--content-button-text-size: 16px;
+	--content-button-text-weight: 400;
 }
 
 .application-container {
@@ -54,6 +68,10 @@ h1.title {
 	background-color: var(--header-background-color);
 	color: var(--header-text-color);
 
+	font-family: var(--header-text-font);
+	font-size: var(--header-text-size);
+	font-weight: var(--header-text-weight);
+
 	display: block;
 	text-align: center;
 	text-transform: lowercase;
@@ -67,6 +85,12 @@ h1.title {
 	align-items: center;
 	justify-content: center;
 	gap: 16px;
+
+	p {
+		font-family: var(--content-text-font);
+		font-size: var(--content-text-size);
+		font-weight: var(--content-text-weight);
+	}
 
 	div.content-page-left {
 		.v-img {
@@ -91,7 +115,11 @@ h1.title {
 
 	.v-btn {
 		background-color: var(--content-button-color);
-		color: var(--content-text-color);
+		color: var(--content-button-text-color);
+
+		font-family: var(--content-button-text-font);
+		font-size: var(--content-button-text-size);
+		font-weight: var(--content-button-text-weight);
 	}
 }
 </style>
