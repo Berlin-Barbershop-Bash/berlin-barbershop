@@ -1,20 +1,115 @@
 <script setup lang="ts">
+import BashSection from '@/component/BashSection.vue'
+import ChorusSection from '@/component/ChorusSection.vue'
+import LanguageMenu from '@/component/LanguageMenu.vue'
+import StickyHeader from '@/component/StickyHeader.vue'
+import TickerBar from '@/component/TickerBar.vue'
 import { useI18n } from 'vue-i18n'
 
-const { t, tm } = useI18n()
+const { t } = useI18n()
 </script>
 
 <template>
-	<div id="home-view">
-		<h1>{{ t('home.title') }}</h1>
-		<p v-for="(spiel, idx) in tm('home.spiel')" :key="idx">{{ spiel }}</p>
-	</div>
+	<language-menu />
+	<sticky-header :text="t('home.berlin')" :index="0" />
+	<ticker-bar :title="t('bash.ticker')" />
+	<chorus-section />
+	<sticky-header :text="t('home.barbershop')" :index="1" />
+	<bash-section />
+	<sticky-header :text="t('home.bash')" :index="2" />
 </template>
 
 <style lang="scss">
-#home-view {
-	h1 {
-		text-align: center;
+h1.title,
+h2.subtitle {
+	font-family: var(--header-text-font);
+	font-weight: var(--header-text-weight);
+	font-feature-settings: var(--font-feat-polymath);
+	font-variation-settings: var(--font-var-polymath);
+	text-transform: lowercase;
+
+	text-align: center;
+	margin: 0;
+	padding: 0;
+}
+
+h2.subtitle {
+	font-size: var(--sub-header-text-size);
+	line-height: var(--sub-header-line-height);
+
+	a {
+		text-decoration: none;
+		color: inherit;
+	}
+	a:hover {
+		text-decoration: underline;
+		text-decoration-thickness: 4px;
+	}
+}
+
+.content-page {
+	display: flex;
+	width: 100%;
+	flex-flow: row wrap;
+	align-items: center;
+	justify-content: center;
+
+	padding: 32px 94px;
+	gap: 24px;
+
+	p {
+		font-family: var(--content-text-font);
+		font-size: var(--content-text-size);
+		font-weight: var(--content-text-weight);
+		line-height: var(--content-line-height);
+
+		padding: 0;
+		margin: 0;
+	}
+
+	.spiel-container {
+		display: flex;
+		flex-flow: column nowrap;
+		gap: 24px;
+	}
+
+	.v-img {
+		max-width: 100%;
+	}
+
+	.v-btn {
+		background-color: var(--content-button-color);
+		color: var(--content-button-text-color);
+
+		font-family: var(--content-button-text-font);
+		font-size: var(--content-button-text-size);
+		font-weight: var(--content-button-text-weight);
+		line-height: var(--content-button-line-height);
+
+		border-radius: 40px;
+		padding: 4px 20px;
+
+		text-transform: lowercase;
+
+		width: fit-content;
+	}
+
+	div.content-page-left {
+		@media screen and (min-width: 800px) {
+			width: calc(50% - 12px);
+		}
+		@media screen and (max-width: 799px) {
+			width: 100%;
+		}
+	}
+
+	div.content-page-right {
+		@media screen and (min-width: 800px) {
+			width: calc(50% - 12px);
+		}
+		@media screen and (max-width: 799px) {
+			width: 100%;
+		}
 	}
 }
 </style>

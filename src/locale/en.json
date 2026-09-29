@@ -1,11 +1,6 @@
 {
-	"locale": {
-		"lang_de": "DE",
-		"lang_en": "EN"
-	},
 	"bash": {
-		"title": "Berlin Barbershop Bash 2027",
-		"menu": "BBB 2027",
+		"menu": "The Bash",
 		"spiel": [
 			"After the success of the first Berlin Barbershop Bash, we will be holding a second in 2027!",
 			"We will test out a 48-hour format in 2027, and look forward to seeing how the longer deadline shapes the event.",
@@ -13,24 +8,12 @@
 			"If you're interested in joining us, please fill out our interest form and sign up for our newsletter below!"
 		],
 		"interest_form": "Interest Form",
-		"newsletter": "Newsletter"
+		"ticker": "Happening again next year!"
 	},
 	"chorus": {
-		"title": "Choruses",
 		"menu": "Choruses",
-		"capitol": {
-			"title": "Capitol Chords",
-			"spiel": ["Lorem Ipsum"]
-		},
-		"wibs": {
-			"title": "Women in Black",
-			"spiel": ["Lorem Ipsum"]
-		}
-	},
-	"event": {
-		"title": "Upcoming Events",
-		"menu": "Events",
-		"bbb2027": { "title": "Berlin Barbershop Bash 2027" }
+		"capitol": { "title": "Capitol Chords" },
+		"wibs": { "title": "Women in Black" }
 	},
 	"hair": {
 		"title": "Looking for a Barber Shop?",
@@ -39,9 +22,5 @@
 			"Come hear us sometime!"
 		]
 	},
-	"home": {
-		"title": "Berlin Barbershop",
-		"menu": "Home",
-		"spiel": ["Welcome, dear barbershopper, to Berlin!"]
-	}
+	"home": { "berlin": "Berlin", "barbershop": "Barbershop", "bash": "Bash" }
 }

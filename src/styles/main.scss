@@ -1,0 +1,115 @@
+@font-face {
+	font-family: 'Default Sans';
+	src: url('../assets/fonts/default-sans-book.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Default Sans';
+	src: url('../assets/fonts/default-sans-book-italic.woff2') format('woff2');
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Default Sans Mono';
+	src: url('../assets/fonts/default-sans-mono-book.woff2') format('woff2');
+	font-weight: 800;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Polymath Var';
+	src: url('../assets/fonts/PolymathVar.woff2') format('woff2');
+	font-weight: 800;
+	font-optical-sizing: 60;
+	font-style: normal;
+	font-display: swap;
+}
+
+:root {
+	--font-feat-polymath: 'ss08' 1, 'ss09' 1, 'ss11' 1, 'ss14' 1, 'ss15' 1, 'ss17' 1;
+	--font-var-polymath: 'opsz' 60;
+	--font-polymath: 'Polymath Var', sans-serif;
+	--font-sans: 'Default Sans', sans-serif;
+	--font-mono: 'Default Sans Mono', monospace;
+	font-synthesis: none;
+
+	// COLORS
+	--dark-color: #331528;
+	--bright-color: #e8a600;
+	--pale-color: #f6ebd6;
+	--pale-ish-color: #e7d9c0;
+
+	--header-background-color: var(--dark-color);
+	--header-text-color: var(--bright-color);
+
+	--language-option-text-color: var(--pale-color);
+
+	--ticker-background-color: var(--bright-color);
+	--ticker-text-color: var(--dark-color);
+
+	--content-background-color: var(--pale-color);
+	--content-text-color: var(--dark-color);
+
+	--content-button-color: var(--pale-ish-color);
+	--content-button-text-color: var(--content-text-color);
+
+	// FONTS
+	--header-text-font: var(--font-polymath);
+	--header-text-weight: 800;
+
+	--language-option-text-font: var(--font-sans);
+	--language-option-text-weight: 400;
+
+	--ticker-text-font: var(--font-mono);
+	--ticker-text-weight: 400;
+
+	--content-text-font: var(--font-sans);
+	--content-text-weight: 400;
+
+	--content-button-text-font: var(--font-mono);
+	--content-button-text-weight: 800;
+
+	// SIZES
+	--header-text-size: 155px;
+	--header-line-height: 192px;
+	--sub-header-text-size: 45px;
+	--sub-header-line-height: 56px;
+
+	--language-option-text-size: 20px;
+	--language-option-line-height: 22px;
+
+	--ticker-text-size: 20px;
+	--ticker-line-height: 22px;
+
+	--content-text-size: 25px;
+	--content-line-height: 28px;
+
+	--content-button-text-size: 30px;
+	--content-button-line-height: 34px;
+
+	@media screen and (max-width: 800px) {
+		--header-text-size: 55px;
+		--header-line-height: 68px;
+		--sub-header-text-size: 30px;
+		--sub-header-line-height: 37px;
+
+		// TODO
+		--language-option-text-size: 15px;
+		--language-option-line-height: 17px;
+
+		--ticker-text-size: 15px;
+		--ticker-line-height: 17px;
+
+		--content-text-size: 15px;
+		--content-line-height: 17px;
+
+		--content-button-text-size: 20px;
+		--content-button-line-height: 22px;
+	}
+}

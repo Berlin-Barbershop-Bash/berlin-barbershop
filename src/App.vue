@@ -1,10 +1,7 @@
-<script setup lang="ts">
-import MenuBar from '@/component/MenuBar.vue'
-</script>
+<script setup lang="ts"></script>
 
 <template>
-	<v-app>
-		<menu-bar />
+	<v-app class="application-container">
 		<v-container class="router">
 			<router-view />
 		</v-container>
@@ -12,7 +9,16 @@ import MenuBar from '@/component/MenuBar.vue'
 </template>
 
 <style lang="scss">
+.application-container {
+	background-color: var(--content-background-color);
+}
+
 .router {
-	margin: 4em 0 0 0;
+	background-color: var(--content-background-color);
+	color: var(--content-text-color);
+
+	margin: 0;
+	padding: 0;
+	max-width: none;
 }
 </style>
