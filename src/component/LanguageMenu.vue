@@ -21,6 +21,7 @@ const setLang = (loc: string) => (locale.value = loc)
 	position: absolute;
 	right: 0;
 	top: 10px;
+	z-index: 1001;
 
 	.language-option {
 		font-family: var(--language-option-text-font);

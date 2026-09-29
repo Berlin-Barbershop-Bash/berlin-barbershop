@@ -2,6 +2,7 @@
 import BashSection from '@/component/BashSection.vue'
 import ChorusSection from '@/component/ChorusSection.vue'
 import LanguageMenu from '@/component/LanguageMenu.vue'
+import StickyHeader from '@/component/StickyHeader.vue'
 import TickerBar from '@/component/TickerBar.vue'
 import { useI18n } from 'vue-i18n'
 
@@ -10,12 +11,12 @@ const { t } = useI18n()
 
 <template>
 	<language-menu />
-	<h1 class="title">{{ t('home.berlin') }}</h1>
+	<sticky-header :text="t('home.berlin')" :index="0" />
 	<ticker-bar :title="t('bash.ticker')" />
 	<chorus-section />
-	<h1 class="title">{{ t('home.barbershop') }}</h1>
+	<sticky-header :text="t('home.barbershop')" :index="1" />
 	<bash-section />
-	<h1 class="title">{{ t('home.bash') }}</h1>
+	<sticky-header :text="t('home.bash')" :index="2" />
 </template>
 
 <style lang="scss">
@@ -30,14 +31,6 @@ h2.subtitle {
 	text-align: center;
 	margin: 0;
 	padding: 0;
-}
-
-h1.title {
-	background-color: var(--header-background-color);
-	color: var(--header-text-color);
-
-	font-size: var(--header-text-size);
-	line-height: var(--header-line-height);
 }
 
 h2.subtitle {
