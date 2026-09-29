@@ -6,7 +6,7 @@ const setLang = (loc: string) => (locale.value = loc)
 </script>
 
 <template>
-	<div id="language-container" v-if="availableLocales.length > 0">
+	<div id="language-container" v-if="availableLocales.length > 1">
 		<template v-for="(lang, idx) in availableLocales" :key="idx">
 			<div v-if="idx > 0" class="divider">|</div>
 			<v-btn @click="() => setLang(lang)" variant="plain" class="ma-0 pa-0 language-option">
