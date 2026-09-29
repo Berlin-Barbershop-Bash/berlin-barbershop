@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import bariNice from '@/assets/images/bari-nice-to-meet-you-duotone-cropped.jpg'
 import majorsFromBajor from '@/assets/images/majors-from-bajor-duotone.jpg'
 import ContentPage from '@/component/ContentPage.vue'
 import { useI18n } from 'vue-i18n'
@@ -9,7 +10,14 @@ const { t, tm } = useI18n()
 <template>
 	<content-page id="bash-section">
 		<template v-slot:left-column>
-			<v-img :src="majorsFromBajor" />
+			<v-carousel hide-delimiters :show-arrows="false" cycle hide-delimiter-background>
+				<v-carousel-item>
+					<v-img :src="majorsFromBajor" />
+				</v-carousel-item>
+				<v-carousel-item>
+					<v-img :src="bariNice" />
+				</v-carousel-item>
+			</v-carousel>
 		</template>
 		<template v-slot:right-column>
 			<div class="spiel-container">
