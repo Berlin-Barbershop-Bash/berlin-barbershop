@@ -20,5 +20,3 @@ const { t, tm } = useI18n()
 		</div>
 	</div>
 </template>
-
-<style lang="scss"></style>

@@ -22,5 +22,3 @@ const { t } = useI18n()
 		</div>
 	</div>
 </template>
-
-<style lang="scss"></style>
