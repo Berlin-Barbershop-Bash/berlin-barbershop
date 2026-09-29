@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import majorsFromBajor from '@/assets/images/majors-from-bajor.jpg'
+import majorsFromBajor from '@/assets/images/majors-from-bajor-duotone.jpg'
 import ContentPage from '@/component/ContentPage.vue'
 import { useI18n } from 'vue-i18n'
 
