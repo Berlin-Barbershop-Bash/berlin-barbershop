@@ -9,7 +9,7 @@ import InterestForm from '@/component/InterestForm.vue'
 import { useI18n } from 'vue-i18n'
 import StyledButton from './StyledButton.vue'
 
-const { tm } = useI18n()
+const { t, tm } = useI18n()
 </script>
 
 <template>
