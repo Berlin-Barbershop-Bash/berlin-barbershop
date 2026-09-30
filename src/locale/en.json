@@ -22,5 +22,26 @@
 			"Come hear us sometime!"
 		]
 	},
+	"form": {
+		"email": "Email",
+		"email_invalid": "Please enter a valid email address",
+		"roles_question": "How would you be interested in participating?",
+		"roles": {
+			"singer": "Singer",
+			"arranger": "Arranger",
+			"swing": "Swing (Coach, Backup Singer, Mock Judge as needed)"
+		},
+		"dates_question": "What dates might work for you?",
+		"dates": {
+			"aug-20-22": "Aug 20–22",
+			"aug-27-29": "Aug 27–29",
+			"sep-3-5": "Sep 3–5",
+			"sep-10-12": "Sep 10–12"
+		},
+		"submit": "Keep me posted!",
+		"close": "Close",
+		"thanks": "Thanks! We'll be in touch.",
+		"error": "Something went wrong. Please try again."
+	},
 	"home": { "berlin": "Berlin", "barbershop": "Barbershop", "bash": "Bash" }
 }

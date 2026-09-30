@@ -1,13 +1,15 @@
 <script setup lang="ts">
+
 import bariNice from '@/assets/images/bari-nice-to-meet-you-duotone-cropped.jpg'
 import majorsFromBajor from '@/assets/images/majors-from-bajor-duotone.jpg'
 import oneNightFriends from '@/assets/images/one-night-friends-duotone.jpg'
 import trickiRicki from '@/assets/images/tricki-ricki-duotone.jpg'
 import ContentPage from '@/component/ContentPage.vue'
+import InterestForm from '@/component/InterestForm.vue'
 import { useI18n } from 'vue-i18n'
 import StyledButton from './StyledButton.vue'
 
-const { t, tm } = useI18n()
+const { tm } = useI18n()
 </script>
 
 <template>
@@ -32,6 +34,7 @@ const { t, tm } = useI18n()
 			<div class="spiel-container">
 				<p v-for="(spiel, idx) in tm('bash.spiel')" :key="idx">{{ spiel }}</p>
 				<styled-button :text="t('bash.interest_form')" />
+				<interest-form />
 			</div>
 		</template>
 	</content-page>
