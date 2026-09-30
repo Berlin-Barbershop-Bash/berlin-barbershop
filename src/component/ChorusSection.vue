@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import capitol from '@/assets/images/capitol-chords-duotone.jpg'
 import ContentPage from '@/component/ContentPage.vue'
 import { useI18n } from 'vue-i18n'
 
@@ -15,6 +16,7 @@ const { t } = useI18n()
 			</h2>
 		</template>
 		<template v-slot:right-column>
+			<v-img :src="capitol" />
 			<h2 class="subtitle">
 				<a href="https://capitalchords.de/" target="_blank">
 					{{ t('chorus.capitol.title') }}
