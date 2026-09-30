@@ -46,23 +46,6 @@ defineProps<{ id: string }>()
 		max-width: 100%;
 	}
 
-	.v-btn {
-		background-color: var(--content-button-color);
-		color: var(--content-button-text-color);
-
-		font-family: var(--content-button-text-font);
-		font-size: var(--content-button-text-size);
-		font-weight: var(--content-button-text-weight);
-		line-height: var(--content-button-line-height);
-
-		border-radius: 40px;
-		padding: 4px 20px;
-
-		text-transform: lowercase;
-
-		width: fit-content;
-	}
-
 	div.content-page-left {
 		@media screen and (min-width: 800px) {
 			width: calc(50% - 12px);
