@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import bariNice from '@/assets/images/bari-nice-to-meet-you-duotone-cropped.jpg'
 import majorsFromBajor from '@/assets/images/majors-from-bajor-duotone.jpg'
+import oneNightFriends from '@/assets/images/one-night-friends-duotone.jpg'
 import ContentPage from '@/component/ContentPage.vue'
 import { useI18n } from 'vue-i18n'
 
@@ -16,6 +17,9 @@ const { t, tm } = useI18n()
 				</v-carousel-item>
 				<v-carousel-item>
 					<v-img :src="bariNice" />
+				</v-carousel-item>
+				<v-carousel-item>
+					<v-img :src="oneNightFriends" />
 				</v-carousel-item>
 			</v-carousel>
 		</template>
