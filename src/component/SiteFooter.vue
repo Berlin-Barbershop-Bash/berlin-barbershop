@@ -82,14 +82,15 @@ const socialLinks = [
 		align-items: center;
 		gap: 8px;
 
-		&:hover {
-			text-decoration: underline;
-		}
-
 		&:focus-visible {
 			outline: 3px solid var(--dark-color);
 			outline-offset: 4px;
 		}
+	}
+
+	// Only the text links underline on hover; the social icons stay as they are
+	.footer-legal a:hover {
+		text-decoration: underline;
 	}
 
 	// One centred list on phones, evenly spaced across both groups (after the rules it overrides)
