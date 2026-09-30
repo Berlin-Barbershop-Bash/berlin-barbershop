@@ -27,3 +27,23 @@ const { t } = useI18n()
 		</template>
 	</content-page>
 </template>
+
+<style lang="scss">
+#chorus-view {
+	// Keep both photos level, whatever the headings below them do
+	align-items: flex-start;
+
+	.content-page-left,
+	.content-page-right {
+		container-type: inline-size;
+	}
+
+	// Shrink the headings with their column so they stay on one line.
+	// "Women in Black" is the longest, at about 7.1em wide, so 13.5cqi leaves a little slack.
+	h2.subtitle {
+		font-size: min(var(--sub-header-text-size), 13.5cqi);
+		line-height: 1.24;
+		white-space: nowrap;
+	}
+}
+</style>

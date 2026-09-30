@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRoute, useRouter } from 'vue-router'
 import { useDisplay } from 'vuetify'
 
 const { t } = useI18n()
@@ -17,6 +18,20 @@ const email = ref('')
 const roles = ref<string[]>([])
 const dates = ref<string[]>([])
 const status = ref<'idle' | 'sending' | 'sent' | 'error'>('idle')
+
+// Links to #interest-form (e.g. the ticker) open the dialog; closing it clears the hash
+const route = useRoute()
+const router = useRouter()
+watch(
+	() => route.hash,
+	(hash) => {
+		if (hash === '#interest-form') open.value = true
+	},
+	{ immediate: true },
+)
+watch(open, (isOpen) => {
+	if (!isOpen && route.hash === '#interest-form') router.replace({ hash: '' })
+})
 
 const emailRules = [
 	(v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) || t('form.email_invalid'),

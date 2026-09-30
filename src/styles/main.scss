@@ -76,7 +76,8 @@
 	--content-button-text-weight: 800;
 
 	// SIZES
-	--header-text-size: 155px;
+	// "barbershop" is about 5.4em wide, so shrink it on medium screens to stay inside the window
+	--header-text-size: min(155px, 17vw);
 	--header-line-height: 192px;
 	--sub-header-text-size: 45px;
 	--sub-header-line-height: 56px;
