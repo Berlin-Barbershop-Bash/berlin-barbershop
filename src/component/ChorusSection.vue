@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import capitol from '@/assets/images/capitol-chords-duotone.jpg'
+import capital from '@/assets/images/capital-chords-duotone.jpg'
 import wibs from '@/assets/images/women-in-black-duotone.jpg'
 import ContentPage from '@/component/ContentPage.vue'
+import DoubleArrow from '@/component/DoubleArrow.vue'
 import { onMounted, onUnmounted, useTemplateRef } from 'vue'
 import { useI18n } from 'vue-i18n'
 
@@ -27,11 +28,6 @@ onUnmounted(() => {
 	document.documentElement.style.removeProperty('--chorus-photo-width')
 })
 
-// Double down-arrow from the design, 29×36
-const arrowPaths = [
-	'M16.6201 19.2909C15.4188 20.833 13.0871 20.8327 11.8862 19.2903L0.638383 4.84295C-0.895744 2.87244 0.508658 -0.000322079 3.00595 2.70838e-08L25.5054 0.00290206C28.0027 0.00322416 29.4063 2.87635 27.8717 4.84647L16.6201 19.2909Z',
-	'M16.6201 34.2909C15.4188 35.833 13.0871 35.8327 11.8862 34.2902L0.638383 19.8429C-0.895744 17.8724 0.508658 14.9997 3.00595 15L25.5054 15.0029C28.0027 15.0032 29.4063 17.8764 27.8717 19.8465L16.6201 34.2909Z',
-]
 </script>
 
 <template>
@@ -45,25 +41,21 @@ const arrowPaths = [
 			</h2>
 		</template>
 		<template v-slot:right-column>
-			<img :src="capitol" alt="" class="chorus-photo" />
+			<img :src="capital" alt="" class="chorus-photo" />
 			<h2 class="subtitle">
 				<a href="https://capitalchords.de/" target="_blank">
-					{{ t('chorus.capitol.title') }}
+					{{ t('chorus.capital.title') }}
 				</a>
 			</h2>
 		</template>
 		<template v-slot:full-width>
 			<!-- Word joiners (&#8288;) keep the arrows on the same line as the text next to them -->
 			<p class="cohost-line">
-				<svg class="cohost-arrow" viewBox="0 0 29 36" aria-hidden="true">
-					<path v-for="d in arrowPaths" :key="d" :d="d" />
-				</svg>&#8288;<i18n-t keypath="chorus.cohosting" scope="global">
+				<double-arrow class="cohost-arrow" />&#8288;<i18n-t keypath="chorus.cohosting" scope="global">
 					<template #bash>
 						<em>{{ t('chorus.cohosting_bash') }}</em>
 					</template>
-				</i18n-t>&#8288;<svg class="cohost-arrow" viewBox="0 0 29 36" aria-hidden="true">
-					<path v-for="d in arrowPaths" :key="d" :d="d" />
-				</svg>
+				</i18n-t>&#8288;<double-arrow class="cohost-arrow" />
 			</p>
 		</template>
 	</content-page>
@@ -126,7 +118,6 @@ const arrowPaths = [
 	.cohost-arrow {
 		height: 0.6em;
 		width: auto;
-		fill: currentColor;
 		vertical-align: baseline;
 		margin-inline: 0.3em;
 	}

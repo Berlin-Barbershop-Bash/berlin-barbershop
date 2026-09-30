@@ -34,7 +34,7 @@
 	},
 	"chorus": {
 		"menu": "Choruses",
-		"capitol": { "title": "Capitol Chords" },
+		"capital": { "title": "Capital Chords" },
 		"wibs": { "title": "Women in Black" },
 		"cohosting": "are co-hosting the {bash}",
 		"cohosting_bash": "bash"
@@ -44,6 +44,89 @@
 		"spiel": [
 			"Apologies, you've stumbled on the wrong kind of barbershop — we sing, we don't cut hair.",
 			"Come hear us sometime!"
+		]
+	},
+	"impressum": {
+		"title": "Impressum",
+		"sections": [
+			{
+				"body": [
+					"The Berlin Barbershop Bash is hosted by Capital Chords e.V."
+				]
+			},
+			{
+				"body": [
+					"Capital Chords e.V.\nc/o Andreas Hundacker\nJanow-Podlaski-Str. 15\n16540 Hohen Neuendorf\nGermany"
+				],
+				"lines": true
+			},
+			{
+				"title": "Contact",
+				"body": [
+					"Email: {email}"
+				]
+			},
+			{
+				"title": "Authorised representative",
+				"body": [
+					"1st Chair (1. Vorsitzender):\nAndreas Hundacker\nJanow-Podlaski-Str. 15\n16540 Hohen Neuendorf"
+				],
+				"lines": true
+			},
+			{
+				"title": "Register",
+				"body": [
+					"Register court: Amtsgericht Charlottenburg\nRegister number: VR 41010 B"
+				],
+				"lines": true
+			},
+			{
+				"title": "Responsible for content",
+				"body": [
+					"Responsible under § 18 (2) MStV: Andreas Hundacker, Janow-Podlaski-Str. 15, 16540 Hohen Neuendorf"
+				]
+			}
+		]
+	},
+	"privacy": {
+		"title": "Privacy Policy",
+		"sections": [
+			{
+				"body": [
+					"We keep this simple: we collect as little as we can, and only what we need to organise the Bash."
+				]
+			},
+			{
+				"title": "Who we are",
+				"body": [
+					"Capital Chords e.V., c/o Andreas Hundacker, Janow-Podlaski-Str. 15, 16540 Hohen Neuendorf, Germany. You can reach us at {email}."
+				]
+			},
+			{
+				"title": "Visiting the site",
+				"body": [
+					"There are no cookies, analytics or tracking here. The site is served by Cloudflare, whose servers need your IP address and browser details to send you the pages (Art. 6(1)(f) GDPR). We don't keep or look at any of it."
+				]
+			},
+			{
+				"title": "Interest form",
+				"body": [
+					"If you fill out the interest form, we store your email address and your answers: how you'd like to take part and which dates work for you. That's all. We use them only to contact you about the Bash, and delete them when you ask us to or once we no longer need them. They're stored with Cloudflare in Western Europe.",
+					"By sending the form you agree to this (Art. 6(1)(a) GDPR). You can change your mind at any time by emailing us."
+				]
+			},
+			{
+				"title": "Email and social media",
+				"body": [
+					"If you email us, we use your message only to reply. Our Instagram and Facebook links are plain links: nothing is shared with them unless you follow one."
+				]
+			},
+			{
+				"title": "Your rights",
+				"body": [
+					"You can ask us at any time what we have stored about you, and have it corrected or deleted (Art. 15–21 GDPR). Just email {email}. You can also complain to a data protection authority."
+				]
+			}
 		]
 	},
 	"form": {
@@ -67,5 +150,11 @@
 		"thanks": "Thanks! We'll be in touch.",
 		"error": "Something went wrong. Please try again."
 	},
-	"home": { "berlin": "Berlin", "barbershop": "Barbershop", "bash": "Bash" }
+	"home": { "berlin": "Berlin", "barbershop": "Barbershop", "bash": "Bash" },
+	"footer": {
+		"impressum": "Impressum",
+		"privacy": "Privacy Policy",
+		"instagram": "Instagram",
+		"facebook": "Facebook"
+	}
 }

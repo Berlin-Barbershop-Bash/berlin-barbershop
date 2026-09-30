@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import ContentPage from '@/component/ContentPage.vue'
+import DoubleArrow from '@/component/DoubleArrow.vue'
+import { contactEmail } from '@/contact'
 import { useI18n } from 'vue-i18n'
 
 const { t, tm } = useI18n()
 
-// Kept out of en.json: vue-i18n reads "@" in a message as a linked-message reference
-const contactEmail = 'hello@berlinbarber.shop'
 </script>
 
 <template>
@@ -32,6 +32,7 @@ const contactEmail = 'hello@berlinbarber.shop'
 		<template v-slot:right-column>
 			<ul class="faq-list">
 				<li v-for="(item, idx) in tm('bash.faq.items')" :key="idx">
+					<span class="faq-bullet"><double-arrow /></span>
 					<p>{{ item }}</p>
 				</li>
 			</ul>
@@ -101,16 +102,44 @@ const contactEmail = 'hello@berlinbarber.shop'
 	}
 }
 
+// The page's last section: room to breathe before the footer
+#bash-faq {
+	@media screen and (min-width: 801px) {
+		padding-bottom: 128px;
+	}
+	@media screen and (max-width: 800px) {
+		padding-bottom: 96px;
+	}
+}
+
 #bash-faq .faq-list {
 	margin: 0;
-	padding-inline-start: 1em;
+	padding: 0;
+	list-style: none;
 
 	display: flex;
 	flex-flow: column nowrap;
 	gap: 16px;
 
-	li::marker {
+	li {
+		display: flex;
+		gap: 0.6em;
+	}
+
+	// The design's double arrow, turned to point at the text; one line tall so it sits on the first line
+	.faq-bullet {
+		flex: none;
+		// Same size as the arrows in the chorus line (0.6em of the body text)
 		font-size: var(--content-text-size);
+		height: var(--content-line-height);
+		display: flex;
+		align-items: center;
+
+		.double-arrow {
+			height: 0.6em;
+			width: auto;
+			transform: rotate(-90deg);
+		}
 	}
 }
 </style>
