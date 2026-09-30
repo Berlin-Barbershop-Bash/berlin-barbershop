@@ -12,14 +12,29 @@ const { t } = useI18n()
 <template>
 	<language-menu />
 	<sticky-header :text="t('home.berlin')" :index="0" />
-	<ticker-bar :title="t('bash.ticker')" />
-	<chorus-section />
-	<sticky-header :text="t('home.barbershop')" :index="1" />
+	<div class="landing-fill">
+		<ticker-bar v-slot="{ copy }">
+			<i18n-t keypath="bash.ticker" scope="global">
+				<template #link>
+					<router-link :to="{ hash: '#interest-form' }" :tabindex="copy ? -1 : undefined">
+						{{ t('bash.ticker_link') }}
+					</router-link>
+				</template>
+			</i18n-t>
+		</ticker-bar>
+		<chorus-section />
+	</div>
+	<sticky-header :text="t('home.barbershop')" :index="1" stick-bottom />
 	<bash-section />
 	<sticky-header :text="t('home.bash')" :index="2" />
 </template>
 
 <style lang="scss">
+// Fill the window between "berlin" and "barbershop" so "barbershop" lands at the bottom
+.landing-fill {
+	min-height: calc(100svh - 2 * var(--header-line-height));
+}
+
 h1.title,
 h2.subtitle {
 	font-family: var(--header-text-font);
