@@ -30,9 +30,18 @@ const { t } = useI18n()
 </template>
 
 <style lang="scss">
-// Fill the window between "berlin" and "barbershop" so "barbershop" lands at the bottom
+// Exactly the window between "berlin" and "barbershop", so "barbershop" lands at the bottom
+// and everything in between fits on screen
 .landing-fill {
-	min-height: calc(100svh - 2 * var(--header-line-height));
+	height: calc(100svh - 2 * var(--header-line-height));
+	display: flex;
+	flex-flow: column nowrap;
+
+	// The choruses take whatever is left under the ticker (and shrink their photos to fit)
+	.content-page {
+		flex: 1;
+		min-height: 0;
+	}
 }
 
 h1.title,
