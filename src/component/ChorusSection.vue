@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import capitol from '@/assets/images/capitol-chords-duotone.jpg'
+import wibs from '@/assets/images/women-in-black-duotone.jpg'
 import ContentPage from '@/component/ContentPage.vue'
 import { useI18n } from 'vue-i18n'
 
@@ -9,6 +10,7 @@ const { t } = useI18n()
 <template>
 	<content-page id="chorus-view">
 		<template v-slot:left-column>
+			<v-img :src="wibs" />
 			<h2 class="subtitle">
 				<a href="https://www.womeninblack.de/" target="_blank">
 					{{ t('chorus.wibs.title') }}
