@@ -189,17 +189,40 @@ async function submit() {
 		--v-theme-on-surface: 51, 21, 40;
 	}
 
+	// The heading and the submit button share one style; all other text shares one size
+	--form-heading-size: 28px;
+	--form-heading-line-height: 34px;
+	--form-text-size: 16px;
+	--form-line-height: 24px;
+
+	.v-card-title,
+	.form-button {
+		font-family: var(--header-text-font);
+		font-weight: var(--header-text-weight);
+		font-feature-settings: var(--font-feat-polymath);
+		font-variation-settings: var(--font-var-polymath);
+		font-size: var(--form-heading-size);
+		line-height: var(--form-heading-line-height);
+		text-transform: lowercase;
+	}
+
 	.v-card-title {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-
-		font-family: var(--header-text-font);
-		font-weight: var(--header-text-weight);
-		font-size: 28px;
-		line-height: 34px;
-		text-transform: lowercase;
 		padding-top: 16px;
+	}
+
+	// Vuetify sizes these differently (14px body, 12px messages); bring them all to one size
+	.v-card-text,
+	.v-card-text p,
+	legend,
+	.v-label,
+	.v-field__input,
+	.v-field-label,
+	.v-messages {
+		font-size: var(--form-text-size);
+		line-height: var(--form-line-height);
 	}
 
 	// Title, fields, thanks message and submit button share one 24px left edge
@@ -220,11 +243,8 @@ async function submit() {
 		padding: 0 24px 24px;
 	}
 
-	// Submit button at the form's text size; the page's button keeps the large size
 	.form-button {
-		font-size: 16px;
-		line-height: 24px;
-		padding: 8px 20px;
+		padding: 4px 20px;
 	}
 
 	// Match the buttons: tan fill, aubergine outline on focus
