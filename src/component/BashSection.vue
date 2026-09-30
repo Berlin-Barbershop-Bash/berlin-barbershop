@@ -9,23 +9,29 @@ import InterestForm from '@/component/InterestForm.vue'
 import { useI18n } from 'vue-i18n'
 
 const { tm } = useI18n()
+
+const photos = [majorsFromBajor, bariNice, oneNightFriends, trickiRicki]
 </script>
 
 <template>
 	<content-page id="bash-section">
 		<template v-slot:left-column>
-			<v-carousel hide-delimiters :show-arrows="false" cycle hide-delimiter-background>
-				<v-carousel-item>
-					<v-img :src="majorsFromBajor" />
-				</v-carousel-item>
-				<v-carousel-item>
-					<v-img :src="bariNice" />
-				</v-carousel-item>
-				<v-carousel-item>
-					<v-img :src="oneNightFriends" />
-				</v-carousel-item>
-				<v-carousel-item>
-					<v-img :src="trickiRicki" />
+			<!-- A slow crossfade every 10s instead of the default 6s slide -->
+			<v-carousel
+				class="calm-carousel"
+				hide-delimiters
+				:show-arrows="false"
+				cycle
+				interval="10000"
+				hide-delimiter-background
+			>
+				<v-carousel-item
+					v-for="photo in photos"
+					:key="photo"
+					transition="fade-transition"
+					reverse-transition="fade-transition"
+				>
+					<v-img :src="photo" />
 				</v-carousel-item>
 			</v-carousel>
 		</template>
@@ -37,3 +43,17 @@ const { tm } = useI18n()
 		</template>
 	</content-page>
 </template>
+
+<style lang="scss">
+.calm-carousel {
+	// Stack the outgoing and incoming photos so they crossfade in place
+	.v-window-item {
+		transition-duration: 1.5s !important;
+	}
+
+	.fade-transition-leave-active {
+		position: absolute !important;
+		inset: 0;
+	}
+}
+</style>
