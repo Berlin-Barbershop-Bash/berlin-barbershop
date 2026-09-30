@@ -7,6 +7,7 @@
 		"dev": "vite",
 		"build": "run-p type-check \"build-only {@}\" --",
 		"preview": "vite preview",
+		"preview:pages": "npm run build-only && wrangler d1 migrations apply bbb-interest --local && wrangler pages dev",
 		"test:unit": "vitest",
 		"build-only": "vite build",
 		"type-check": "vue-tsc --build",
@@ -23,6 +24,7 @@
 		"vuetify": "^4.2.1"
 	},
 	"devDependencies": {
+		"@cloudflare/workers-types": "^5.20260929.1",
 		"@tsconfig/node24": "^24.0.5",
 		"@types/jsdom": "^30.0.0",
 		"@types/node": "^24.13.6",
@@ -46,7 +48,8 @@
 		"vite-plugin-vue-devtools": "^8.2.1",
 		"vitest": "^4.1.11",
 		"vue-eslint-parser": "^10.4.1",
-		"vue-tsc": "^3.3.11"
+		"vue-tsc": "^3.3.11",
+		"wrangler": "^4.144.0"
 	},
 	"engines": {
 		"node": "^22.18.0 || >=24.12.0"

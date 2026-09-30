@@ -1,0 +1,14 @@
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "berlin-barbershop",
+	"compatibility_date": "2026-09-01",
+	"pages_build_output_dir": "./dist",
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "bbb-interest",
+			// Placeholder for local dev. Replace with the Database ID from the bbb-interest page in the D1 dashboard before deploying.
+			"database_id": "a9baa8d0-30ba-4f0b-bc2b-17b724262a64",
+		},
+	],
+}
