@@ -5,7 +5,8 @@ import { nextTick, onUnmounted, ref, useTemplateRef, watch } from 'vue'
 // Folds the stacked headers into one slowly drifting line: each word glides from its header into
 // the line, its dark bar sliding up with it, then the drift eases up to speed. Scrolling back
 // reverses it: each word flies home from its nearest copy in the line, its bar unfolding to
-// wherever its header now is.
+// wherever its header now is. Destinations are re-measured every frame, because once you scroll
+// back up "bash" is no longer stuck and moves with the page while its word is still in the air.
 const props = defineProps<{
 	collapsed: boolean
 	words: string[]
@@ -18,7 +19,9 @@ const headersHidden = defineModel<boolean>('headersHidden', { default: false })
 const GLIDE_MS = 1000
 const STAGGER_MS = 120
 const RAMP_MS = 1500
-const EASING = 'cubic-bezier(0.65, 0, 0.35, 1)'
+// The same curve as cubic-bezier(0.65, 0, 0.35, 1), for progress p from 0 to 1
+const ease = (p: number) => (p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2)
+const lerp = (from: number, to: number, t: number) => from + (to - from) * t
 
 type Phase = 'stacked' | 'collapsing' | 'line' | 'expanding'
 const phase = ref<Phase>('stacked')
@@ -91,7 +94,8 @@ function centreLine(): Element | undefined {
 	if (!first || !animation) return first
 	const width = first.getBoundingClientRect().width
 	const words = [...first.querySelectorAll('.word')]
-	const phrase = words.at(-1)!.getBoundingClientRect().right - words[0]!.getBoundingClientRect().left
+	const phrase =
+		words.at(-1)!.getBoundingClientRect().right - words[0]!.getBoundingClientRect().left
 	const centre = (window.innerWidth - phrase) / 2
 	// The second copy starts one width in and drifts left, reaching the centre after this long
 	const cycle = Number(animation.effect?.getComputedTiming().duration ?? 0)
@@ -111,12 +115,14 @@ function currentBars(stacked: Bar[]): Bar[] {
 }
 
 let run = 0
-let running: Animation[] = []
+let glideFrame = 0
+let endGlide: (() => void) | undefined
 let rampFrame = 0
 
 function stopMotion() {
-	running.forEach((a) => a.cancel())
-	running = []
+	cancelAnimationFrame(glideFrame)
+	endGlide?.()
+	endGlide = undefined
 	cancelAnimationFrame(rampFrame)
 }
 
@@ -154,81 +160,71 @@ async function glide(toLine: boolean) {
 	// The line waits, still and centred, until the words have landed in it
 	const landing = toLine ? centreLine() : undefined
 	const scale = lineScale()
-	const to = landing ? [...landing.querySelectorAll('.word')].map((el) => spotOf(el, scale)) : stacked
-	const barsTo = toLine ? stackedBars.map(() => barOf(line.value)) : stackedBars
 	const half = headerLineHeight() / 2
 	const count = props.words.length
 	// Collapsing, "berlin" leads; expanding, "bash" leads
 	const delay = (i: number) => STAGGER_MS * (toLine ? i : count - 1 - i)
+	const bottom = (bar: Bar) => bar.top + bar.height
 
-	strips.value?.forEach((el, i) => {
-		const start = barsFrom[i]!
-		const end = barsTo[i]!
-		el.style.top = `${end.top}px`
-		el.style.height = `${end.height}px`
-		running.push(
-			el.animate(
-				[
-					{
-						transform: `translateY(${start.top - end.top}px) scaleY(${start.height / (end.height || 1)})`,
-					},
-					{ transform: 'none' },
-				],
-				{ duration: GLIDE_MS, delay: delay(i), easing: EASING, fill: 'both' },
-			),
-		)
-	})
+	// Where the headers are right now; "bash" moves with the page once it's no longer stuck
+	const stackedNow = () => props.sources.map((el) => barOf(el?.parentElement))
+	const spotsTo = (): Spot[] =>
+		landing
+			? [...landing.querySelectorAll('.word')].map((el) => spotOf(el, scale))
+			: props.sources.map((el) => (el ? spotOf(el, 1) : { x: 0, y: 0, scale: 1 }))
+	const barsTo = (stacked: Bar[]): Bar[] =>
+		toLine ? stacked.map(() => barOf(line.value)) : stacked
 
-	// The staggered bars open gaps between each other, so fill behind the ones that form one solid
-	// block in the stack. Headers spread down the page (after a jump to the top) leave real content
-	// between them, which stays visible.
-	let solid = 1
-	while (
-		solid < count &&
-		stackedBars[solid]!.top <= stackedBars[solid - 1]!.top + stackedBars[solid - 1]!.height + half
-	) {
-		solid++
-	}
-	if (backdrop.value) {
-		// Scaled from the top, its bottom edge tracks the lowest solid bar's bottom exactly
-		const bottom = (bar: Bar) => bar.top + bar.height
-		const startBottom = bottom(barsFrom[solid - 1]!)
-		const endBottom = bottom(barsTo[solid - 1]!)
-		backdrop.value.style.height = solid > 1 ? `${endBottom}px` : '0'
-		if (solid > 1) {
-			running.push(
-				backdrop.value.animate(
-					[{ transform: `scaleY(${startBottom / (endBottom || 1)})` }, { transform: 'none' }],
-					{ duration: GLIDE_MS, delay: delay(solid - 1), easing: EASING, fill: 'both' },
-				),
-			)
+	function frame(now: number, startedAt: number) {
+		const elapsed = now - startedAt
+		const progress = (i: number) => ease(Math.min(Math.max((elapsed - delay(i)) / GLIDE_MS, 0), 1))
+		const stacked = stackedNow()
+		const to = spotsTo()
+		const bars = barsTo(stacked)
+
+		strips.value?.forEach((el, i) => {
+			const t = progress(i)
+			el.style.transform = `translateY(${lerp(barsFrom[i]!.top, bars[i]!.top, t)}px)`
+			el.style.height = `${lerp(barsFrom[i]!.height, bars[i]!.height, t)}px`
+		})
+
+		// The staggered bars open gaps between each other, so fill behind the ones that form one
+		// solid block in the stack. Headers spread down the page (after a jump to the top, or
+		// "bash" scrolling away) leave real content between them, which stays visible.
+		let solid = 1
+		while (solid < count && stacked[solid]!.top <= bottom(stacked[solid - 1]!) + half) {
+			solid++
 		}
+		if (backdrop.value) {
+			const t = progress(solid - 1)
+			backdrop.value.style.height =
+				solid > 1 ? `${lerp(bottom(barsFrom[solid - 1]!), bottom(bars[solid - 1]!), t)}px` : '0'
+		}
+
+		// Flyers are stacked-size boxes, scaled about their left-centre
+		flyers.value?.forEach((el, i) => {
+			const t = progress(i)
+			const x = lerp(from[i]!.x, to[i]!.x, t)
+			const y = lerp(from[i]!.y, to[i]!.y, t)
+			el.style.transform = `translate(${x}px, ${y - half}px) scale(${lerp(from[i]!.scale, to[i]!.scale, t)})`
+		})
+
+		return elapsed >= GLIDE_MS + STAGGER_MS * (count - 1)
 	}
 
-	flyers.value?.forEach((el, i) => {
-		const start = from[i]!
-		const end = to[i]!
-		el.style.left = `${end.x}px`
-		el.style.top = `${end.y - half}px`
-		// Flyers are stacked-size boxes placed at the landing spot, scaled about their left-centre
-		running.push(
-			el.animate(
-				[
-					{ transform: `translate(${start.x - end.x}px, ${start.y - end.y}px) scale(${start.scale})` },
-					{ transform: `scale(${end.scale})` },
-				],
-				{ duration: GLIDE_MS, delay: delay(i), easing: EASING, fill: 'both' },
-			),
-		)
+	// Place everything before the first paint, then follow the headers frame by frame
+	const startedAt = performance.now()
+	frame(startedAt, startedAt)
+	const finished = await new Promise<boolean>((resolve) => {
+		endGlide = () => resolve(false)
+		const step = (now: number) => {
+			if (frame(now, startedAt)) resolve(true)
+			else glideFrame = requestAnimationFrame(step)
+		}
+		glideFrame = requestAnimationFrame(step)
 	})
-
-	try {
-		await Promise.all(running.map((a) => a.finished))
-	} catch {
-		return // Cancelled by a newer glide
-	}
-	if (id !== run) return
-	running = []
+	if (!finished || id !== run) return // Cancelled by a newer glide
+	endGlide = undefined
 
 	if (toLine) {
 		phase.value = 'line'
@@ -261,7 +257,8 @@ onUnmounted(stopMotion)
 		>
 			<ticker-bar :copies="4">
 				<template v-for="(word, i) in words" :key="i">
-					<span class="word" :data-word="i">{{ word }}</span>{{ i < words.length - 1 ? ' ' : '' }}
+					<span class="word" :data-word="i">{{ word }}</span
+					>{{ i < words.length - 1 ? ' ' : '' }}
 				</template>
 			</ticker-bar>
 		</div>
@@ -298,6 +295,8 @@ onUnmounted(stopMotion)
 		line-height: var(--header-line-height);
 
 		position: absolute;
+		top: 0;
+		left: 0;
 		white-space: nowrap;
 		transform-origin: 0 50%;
 		will-change: transform;
