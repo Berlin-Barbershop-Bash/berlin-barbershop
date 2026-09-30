@@ -134,7 +134,7 @@ async function submit() {
 	text-transform: lowercase;
 
 	border: none;
-	border-radius: 0;
+	border-radius: 20px;
 	padding: 4px 20px;
 	width: fit-content;
 	cursor: pointer;
@@ -183,6 +183,7 @@ async function submit() {
 		font-size: 28px;
 		line-height: 34px;
 		text-transform: lowercase;
+		padding-top: 16px;
 	}
 
 	// Title, fields, thanks message and submit button share one 24px left edge
