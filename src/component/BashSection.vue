@@ -2,6 +2,7 @@
 import bariNice from '@/assets/images/bari-nice-to-meet-you-duotone-cropped.jpg'
 import majorsFromBajor from '@/assets/images/majors-from-bajor-duotone.jpg'
 import oneNightFriends from '@/assets/images/one-night-friends-duotone.jpg'
+import trickiRicki from '@/assets/images/tricki-ricki-duotone.jpg'
 import ContentPage from '@/component/ContentPage.vue'
 import { useI18n } from 'vue-i18n'
 import StyledButton from './StyledButton.vue'
@@ -21,6 +22,9 @@ const { t, tm } = useI18n()
 				</v-carousel-item>
 				<v-carousel-item>
 					<v-img :src="oneNightFriends" />
+				</v-carousel-item>
+				<v-carousel-item>
+					<v-img :src="trickiRicki" />
 				</v-carousel-item>
 			</v-carousel>
 		</template>
