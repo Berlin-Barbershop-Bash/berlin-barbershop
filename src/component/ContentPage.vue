@@ -11,6 +11,9 @@ defineProps<{ id: string }>()
 			<div class="content-page-right">
 				<slot name="right-column"></slot>
 			</div>
+			<div v-if="$slots['full-width']" class="content-page-full">
+				<slot name="full-width"></slot>
+			</div>
 		</slot>
 	</div>
 </template>
@@ -58,6 +61,10 @@ defineProps<{ id: string }>()
 		@media screen and (max-width: 800px) {
 			width: 100%;
 		}
+	}
+
+	div.content-page-full {
+		width: 100%;
 	}
 
 	div.content-page-right {

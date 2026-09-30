@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import BashDetails from '@/component/BashDetails.vue'
 import BashSection from '@/component/BashSection.vue'
 import ChorusSection from '@/component/ChorusSection.vue'
 import LanguageMenu from '@/component/LanguageMenu.vue'
@@ -27,6 +28,7 @@ const { t } = useI18n()
 	<sticky-header :text="t('home.barbershop')" :index="1" stick-bottom />
 	<bash-section />
 	<sticky-header :text="t('home.bash')" :index="2" />
+	<bash-details />
 </template>
 
 <style lang="scss">

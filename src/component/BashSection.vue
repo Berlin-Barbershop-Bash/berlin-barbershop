@@ -8,13 +8,13 @@ import ContentPage from '@/component/ContentPage.vue'
 import InterestForm from '@/component/InterestForm.vue'
 import { useI18n } from 'vue-i18n'
 
-const { tm } = useI18n()
+const { t } = useI18n()
 
 const photos = [majorsFromBajor, bariNice, oneNightFriends, trickiRicki]
 </script>
 
 <template>
-	<content-page id="bash-section">
+	<content-page id="bash-section" class="bash-details">
 		<template v-slot:left-column>
 			<!-- A slow crossfade every 10s instead of the default 6s slide -->
 			<v-carousel
@@ -37,7 +37,15 @@ const photos = [majorsFromBajor, bariNice, oneNightFriends, trickiRicki]
 		</template>
 		<template v-slot:right-column>
 			<div class="spiel-container">
-				<p v-for="(spiel, idx) in tm('bash.spiel')" :key="idx">{{ spiel }}</p>
+				<h2 class="subtitle">{{ t('bash.welcome.title') }}</h2>
+				<p>{{ t('bash.welcome.body') }}</p>
+				<i18n-t tag="p" keypath="bash.welcome.cta" scope="global">
+					<template #link>
+						<router-link :to="{ hash: '#interest-form' }">
+							{{ t('bash.welcome.cta_link') }}
+						</router-link>
+					</template>
+				</i18n-t>
 				<interest-form />
 			</div>
 		</template>
