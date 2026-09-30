@@ -1,9 +1,16 @@
 <script setup lang="ts">
-defineProps<{ text: string; index: number }>()
+// stickBottom pins the header to the bottom of the window until it scrolls into place
+defineProps<{ text: string; index: number; stickBottom?: boolean }>()
 </script>
 
 <template>
-	<h1 class="title" :style="{ top: `calc(var(--header-line-height) * ${index})` }">
+	<h1
+		class="title"
+		:style="{
+			top: `calc(var(--header-line-height) * ${index})`,
+			bottom: stickBottom ? 0 : undefined,
+		}"
+	>
 		{{ text }}
 	</h1>
 </template>

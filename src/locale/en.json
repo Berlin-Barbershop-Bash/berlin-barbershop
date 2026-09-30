@@ -8,7 +8,8 @@
 			"If you're interested in joining us, please fill out our interest form and sign up for our newsletter below!"
 		],
 		"interest_form": "Interest Form",
-		"ticker": "Happening again next year!"
+		"ticker": "Happening again in 2027! Fill out our {link} to get updates.",
+		"ticker_link": "interest form"
 	},
 	"chorus": {
 		"menu": "Choruses",

@@ -1,13 +1,14 @@
 <script setup lang="ts">
-defineProps<{ title: string }>()
+// The default slot is repeated to fill the bar; `copy` is true for every repeat after the first
+defineSlots<{ default(props: { copy: boolean }): unknown }>()
 
 const asdf = Array(200).fill(0)
 </script>
 
 <template>
 	<div class="ticker-bar">
-		<div v-for="(_, idx) in asdf" :key="idx" class="ticker-item">
-			{{ title }}
+		<div v-for="(_, idx) in asdf" :key="idx" class="ticker-item" :aria-hidden="idx > 0">
+			<slot :copy="idx > 0" />
 		</div>
 	</div>
 </template>
@@ -35,14 +36,25 @@ const asdf = Array(200).fill(0)
 
 	display: flex;
 	flex-flow: row nowrap;
-	overflow-y: clip;
-	gap: 8px;
+	overflow: clip;
 
 	padding: 10px 0;
 
 	.ticker-item {
 		white-space: nowrap;
-		animation: scroll-left 6s linear infinite;
+		// Spacing lives inside the item so the -100% loop lands exactly on the next copy
+		padding-inline-end: 8px;
+		// About 35px/s on desktop
+		animation: scroll-left 24s linear infinite;
+
+		@media (prefers-reduced-motion: reduce) {
+			animation: none;
+		}
+	}
+
+	a {
+		color: inherit;
+		text-decoration: underline;
 	}
 }
 </style>
