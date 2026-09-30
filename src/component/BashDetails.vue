@@ -6,14 +6,18 @@ import { useI18n } from 'vue-i18n'
 
 const { t, tm } = useI18n()
 
+// Never more columns than divide the steps evenly, so no row is left with a straggler:
+// 6 steps show 3, 2 or 1 per row; 4 steps show 2 or 1
+const steps = () => tm('bash.schedule.steps') as unknown as string[]
+const maxColumns = () => (steps().length % 3 === 0 ? 3 : 2)
 </script>
 
 <template>
 	<content-page id="bash-schedule" class="bash-details">
 		<div class="spiel-container">
 			<p>{{ t('bash.schedule.intro') }}</p>
-			<ol class="schedule-steps">
-				<li v-for="(step, idx) in tm('bash.schedule.steps')" :key="idx">
+			<ol class="schedule-steps" :style="{ '--max-columns': maxColumns() }">
+				<li v-for="(step, idx) in steps()" :key="idx">
 					<p>{{ step }}</p>
 				</li>
 			</ol>
@@ -80,8 +84,19 @@ const { t, tm } = useI18n()
 		padding: 0;
 
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
-		gap: 32px 48px;
+		// At least 420px per column, and never narrower than 1/--max-columns of the row
+		--column-gap: 48px;
+		grid-template-columns: repeat(
+			auto-fit,
+			minmax(
+				max(
+					min(100%, 420px),
+					calc((100% - (var(--max-columns) - 1) * var(--column-gap)) / var(--max-columns))
+				),
+				1fr
+			)
+		);
+		gap: 32px var(--column-gap);
 
 		li {
 			counter-increment: step;
