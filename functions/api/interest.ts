@@ -4,7 +4,7 @@ interface Env {
 
 // Keep in sync with the options in src/component/InterestForm.vue
 const ROLES = ['singer', 'arranger', 'swing']
-const DATES = ['aug-20-22', 'aug-27-29', 'sep-3-5', 'sep-10-12']
+const EVENTS_MAX_LENGTH = 200
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 const pick = (formData: FormData, key: string, allowed: string[]) =>
@@ -34,13 +34,18 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
 		return Response.json({ ok: false, error: 'not_configured' }, { status: 500 })
 	}
 
+	// Free text: which other barbershop events they plan to attend in 2027
+	const events = String(formData.get('events') ?? '')
+		.trim()
+		.slice(0, EVENTS_MAX_LENGTH)
+
 	const now = new Date().toISOString()
 	await env.DB.prepare(
-		`INSERT INTO signups (email, roles, dates, created_at, updated_at) VALUES (?1, ?2, ?3, ?4, ?4)
+		`INSERT INTO signups (email, roles, events, created_at, updated_at) VALUES (?1, ?2, ?3, ?4, ?4)
 		 ON CONFLICT(email) DO UPDATE SET
-		   roles = excluded.roles, dates = excluded.dates, updated_at = excluded.updated_at`,
+		   roles = excluded.roles, events = excluded.events, updated_at = excluded.updated_at`,
 	)
-		.bind(email, pick(formData, 'roles', ROLES), pick(formData, 'dates', DATES), now)
+		.bind(email, pick(formData, 'roles', ROLES), events, now)
 		.run()
 
 	return Response.json({ ok: true })

@@ -11,15 +11,15 @@ const { t } = useI18n()
 const { width } = useDisplay()
 const phone = computed(() => width.value <= PHONE_MAX_WIDTH)
 
-// Keep in sync with ROLES and DATES in functions/api/interest.ts
+// Keep in sync with ROLES and EVENTS_MAX_LENGTH in functions/api/interest.ts
 const roleOptions = ['singer', 'arranger', 'swing']
-const dateOptions = ['aug-20-22', 'aug-27-29', 'sep-3-5', 'sep-10-12']
+const eventsMaxLength = 200
 
 const open = ref(false)
 const valid = ref(false)
 const email = ref('')
 const roles = ref<string[]>([])
-const dates = ref<string[]>([])
+const events = ref('')
 const status = ref<'idle' | 'sending' | 'sent' | 'error'>('idle')
 
 // Links to #interest-form (e.g. the ticker) open the dialog; closing it clears the hash
@@ -47,7 +47,7 @@ async function submit() {
 	const body = new FormData()
 	body.set('email', email.value)
 	roles.value.forEach((role) => body.append('roles', role))
-	dates.value.forEach((date) => body.append('dates', date))
+	body.set('events', events.value.trim())
 
 	try {
 		const res = await fetch('/api/interest', { method: 'POST', body })
@@ -116,18 +116,18 @@ async function submit() {
 						/>
 					</fieldset>
 
-					<fieldset>
-						<legend>{{ t('form.dates_question') }}</legend>
-						<v-checkbox
-							v-for="date in dateOptions"
-							:key="date"
-							v-model="dates"
-							:value="date"
-							:label="t(`form.dates.${date}`)"
-							density="compact"
+					<div class="question">
+						<label for="interest-form-events">{{ t('form.events_question') }}</label>
+						<v-text-field
+							id="interest-form-events"
+							v-model="events"
+							:placeholder="t('form.events_placeholder')"
+							:maxlength="eventsMaxLength"
+							variant="solo"
+							flat
 							hide-details
 						/>
-					</fieldset>
+					</div>
 
 					<p v-if="status === 'error'" class="error" role="alert">{{ t('form.error') }}</p>
 				</v-card-text>
@@ -143,7 +143,6 @@ async function submit() {
 </template>
 
 <style lang="scss">
-
 .form-button {
 	background-color: var(--content-button-color);
 	color: var(--content-button-text-color);
@@ -208,6 +207,7 @@ async function submit() {
 	.v-card-text,
 	.v-card-text p,
 	legend,
+	.question > label,
 	.v-label,
 	.v-field__input,
 	.v-field-label,
@@ -241,7 +241,8 @@ async function submit() {
 	}
 
 	// Vuetify fades the placeholder label; keep it clearly readable (≥ 4.5:1)
-	.v-field-label {
+	.v-field-label,
+	.v-field__input::placeholder {
 		opacity: 0.8;
 	}
 
@@ -250,10 +251,17 @@ async function submit() {
 		outline-offset: -3px;
 	}
 
-	fieldset {
+	fieldset,
+	.question {
 		border: none;
 		margin: 16px 0 0;
 		padding: 0;
+	}
+
+	// The question sits above its field like a legend above its checkboxes
+	.question > label {
+		display: block;
+		margin-bottom: 8px;
 	}
 
 	.error {
