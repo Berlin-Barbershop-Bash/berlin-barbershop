@@ -1,8 +1,9 @@
 <script setup lang="ts">
 // The default slot is repeated to fill the bar; `copy` is true for every repeat after the first
+const { copies = 200 } = defineProps<{ copies?: number }>()
 defineSlots<{ default(props: { copy: boolean }): unknown }>()
 
-const asdf = Array(200).fill(0)
+const asdf = Array(copies).fill(0)
 </script>
 
 <template>
@@ -44,8 +45,8 @@ const asdf = Array(200).fill(0)
 		white-space: nowrap;
 		// Spacing lives inside the item so the -100% loop lands exactly on the next copy
 		padding-inline-end: 8px;
-		// About 35px/s on desktop
-		animation: scroll-left 24s linear infinite;
+		// About 35px/s on desktop; set --ticker-duration to change the speed
+		animation: scroll-left var(--ticker-duration, 24s) linear infinite;
 
 		@media (prefers-reduced-motion: reduce) {
 			animation: none;

@@ -2,17 +2,47 @@
 import BashDetails from '@/component/BashDetails.vue'
 import BashSection from '@/component/BashSection.vue'
 import ChorusSection from '@/component/ChorusSection.vue'
+import CollapsedHeader from '@/component/CollapsedHeader.vue'
 import LanguageMenu from '@/component/LanguageMenu.vue'
 import StickyHeader from '@/component/StickyHeader.vue'
 import TickerBar from '@/component/TickerBar.vue'
+import { onMounted, onUnmounted, ref, useTemplateRef } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
+
+// Once "bash" has stacked under "berlin" and "barbershop", swap the three for one scrolling line.
+// The marker sits where "bash" would be if it weren't sticky.
+const bashMarker = ref<HTMLElement>()
+const collapsed = ref(false)
+// Hidden while CollapsedHeader's words stand in for them
+const headersHidden = ref(false)
+const berlinHeader = useTemplateRef('berlinHeader')
+const barbershopHeader = useTemplateRef('barbershopHeader')
+const bashHeader = useTemplateRef('bashHeader')
+
+function updateCollapsed() {
+	if (!bashMarker.value) return
+	const lineHeight = parseFloat(
+		getComputedStyle(document.documentElement).getPropertyValue('--header-line-height'),
+	)
+	collapsed.value = bashMarker.value.getBoundingClientRect().top <= 2 * lineHeight
+}
+
+onMounted(() => {
+	updateCollapsed()
+	window.addEventListener('scroll', updateCollapsed, { passive: true })
+	window.addEventListener('resize', updateCollapsed)
+})
+onUnmounted(() => {
+	window.removeEventListener('scroll', updateCollapsed)
+	window.removeEventListener('resize', updateCollapsed)
+})
 </script>
 
 <template>
 	<language-menu />
-	<sticky-header :text="t('home.berlin')" :index="0" />
+	<sticky-header ref="berlinHeader" :text="t('home.berlin')" :index="0" :collapsed="headersHidden" />
 	<div class="landing-fill">
 		<ticker-bar v-slot="{ copy }">
 			<i18n-t keypath="bash.ticker" scope="global">
@@ -25,10 +55,23 @@ const { t } = useI18n()
 		</ticker-bar>
 		<chorus-section />
 	</div>
-	<sticky-header :text="t('home.barbershop')" :index="1" stick-bottom />
+	<sticky-header
+		ref="barbershopHeader"
+		:text="t('home.barbershop')"
+		:index="1"
+		stick-bottom
+		:collapsed="headersHidden"
+	/>
 	<bash-section />
-	<sticky-header :text="t('home.bash')" :index="2" />
+	<div ref="bashMarker" />
+	<sticky-header ref="bashHeader" :text="t('home.bash')" :index="2" :collapsed="headersHidden" />
 	<bash-details />
+	<collapsed-header
+		v-model:headers-hidden="headersHidden"
+		:collapsed
+		:words="[t('home.berlin'), t('home.barbershop'), t('home.bash')]"
+		:sources="[berlinHeader?.textEl, barbershopHeader?.textEl, bashHeader?.textEl]"
+	/>
 </template>
 
 <style lang="scss">
