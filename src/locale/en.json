@@ -6,17 +6,16 @@
 		"ticker_link": "interest form",
 		"welcome": {
 			"title": "Welcome to the Berlin Barbershop Bash!",
-			"body": "A 2-day event where we randomly assign singers and a song to arrangers; the arrangers have a day to write an arrangement, and the singers have a day to put the arrangement on its feet, and then we have a concert together in the evening. You can come as a quartet, or as individual singers to form a scratch quartet on the spot.",
-			"cta": "If that sounds like fun to you, please fill out {link} to show your interest!",
-			"cta_link": "this form"
+			"body": "A two-day event where we randomly match singers, songs, and arrangers; the arrangers have a day to write an arrangement, and the singers have a day to put the arrangement on its feet, and then we have a concert together in the evening. You can come as a quartet, or as individual singers to form a scratch quartet on the spot.",
+			"cta": "If that sounds like fun to you, sign up to show your interest!"
 		},
 		"schedule": {
-			"intro": "The schedule is still under development, but this is the rough plan:",
+			"intro": "The detailed schedule is still under development, but we have a rough plan:",
 			"steps": [
 				"We will gather together to kickoff the event, randomly assign songs and singers, give the arrangers a chance to learn the singers' voices, and give the singers the chance to find a quartet formation that works for them.",
 				"This year, we plan to have a couple of songs for each arranger and quartet to choose from. We'll have prepared leadsheets (melody and original chords) and 1:30–2:00 cuts. Cutting down the song to approximately that length is mandatory, but you don't have to use the exact cut we'll suggest.",
 				"Arrangers will gather together to arrange their music. There will be opportunity for arrangers to solicit or give feedback for work in progress during the night of arranging, which was a lot of fun last year.",
-				"While the arrangers do their thing, the singers will head out on a scavenger hunt across Berlin, most of which will involve sending in clips of singing tags in varying locations or circumstances. (Highest elevation possible, fanciest clothing possible, after eating something spicy, etc)",
+				"While the arrangers do their thing, the singers will head out on a scavenger hunt across Berlin, most of which will involve sending in clips of singing tags in varying locations or circumstances.",
 				"In the evening, after a day of arranging and tagging, we'll exchange music. There'll be an opportunity for feedback from the singers and last-minute edits as the singers have the evening to individually learn their parts.",
 				"After that, much-needed rest all around, a day of rehearsal, and then we have ourselves a concert!"
 			],
@@ -26,10 +25,10 @@
 			"title": "FAQ",
 			"items": [
 				"Singers may use sheet music as needed for the concert",
-				"Arrangers may not also participate as singers - maybe next year ;)",
+				"Arrangers may not also participate as singers",
 				"The concert is open to friends and family, but not the general public",
 				"The goal is to arrange and perform a piece of any length; if the arranger writes a single chorus or a tag, the singers have that much more time to polish it :)",
-				"There will probably be arranging pancakes again"
+				"Yes, there will probably be arranging pancakes again"
 			]
 		}
 	},

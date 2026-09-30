@@ -5,7 +5,7 @@ import { useI18n } from 'vue-i18n'
 const { t, tm } = useI18n()
 
 // Kept out of en.json: vue-i18n reads "@" in a message as a linked-message reference
-const contactEmail = 'FIXME@berlinbarber.shop'
+const contactEmail = 'hello@berlinbarber.shop'
 </script>
 
 <template>
