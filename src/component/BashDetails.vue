@@ -17,7 +17,7 @@ const contactEmail = 'hello@berlinbarber.shop'
 					<p>{{ step }}</p>
 				</li>
 			</ol>
-			<i18n-t tag="p" keypath="bash.schedule.outro" scope="global">
+			<i18n-t tag="p" keypath="bash.schedule.outro" scope="global" class="schedule-outro">
 				<template #email>
 					<a :href="`mailto:${contactEmail}`">{{ contactEmail }}</a>
 				</template>
@@ -58,6 +58,19 @@ const contactEmail = 'hello@berlinbarber.shop'
 // A tan band sets the schedule apart from the sections around it
 #bash-schedule {
 	background-color: var(--pale-ish-color);
+
+	// Breathing room under the "bash" bar
+	@media screen and (min-width: 801px) {
+		padding-top: 64px;
+	}
+	@media screen and (max-width: 800px) {
+		padding-top: 48px;
+	}
+
+	// Set the closing note apart from the last step (48px with the container's 24px gap)
+	.schedule-outro {
+		margin-top: 24px;
+	}
 
 	.schedule-steps {
 		list-style: none;
