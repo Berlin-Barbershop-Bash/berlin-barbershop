@@ -123,13 +123,14 @@ async function submit() {
 </template>
 
 <style lang="scss">
-// Button styles from Figma (testing node 17:10), using the existing palette only
-.form-button {
-	background-color: var(--pale-ish-color);
-	color: var(--dark-color);
 
-	font-family: var(--font-sans);
+.form-button {
+	background-color: var(--content-button-color);
+	color: var(--content-button-text-color);
+
+	font-family: var(--content-button-text-font);
 	font-size: var(--content-button-text-size);
+	font-weight: var(--content-button-text-weight);
 	line-height: var(--content-button-line-height);
 	text-transform: lowercase;
 
@@ -150,7 +151,7 @@ async function submit() {
 
 	&:focus-visible {
 		outline: 3px solid var(--dark-color);
-		outline-offset: -3px;
+		outline-offset: 0;
 	}
 
 	&:disabled {

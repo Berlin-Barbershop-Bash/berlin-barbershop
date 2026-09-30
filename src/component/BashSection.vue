@@ -7,9 +7,8 @@ import trickiRicki from '@/assets/images/tricki-ricki-duotone.jpg'
 import ContentPage from '@/component/ContentPage.vue'
 import InterestForm from '@/component/InterestForm.vue'
 import { useI18n } from 'vue-i18n'
-import StyledButton from './StyledButton.vue'
 
-const { t, tm } = useI18n()
+const { tm } = useI18n()
 </script>
 
 <template>
@@ -33,7 +32,6 @@ const { t, tm } = useI18n()
 		<template v-slot:right-column>
 			<div class="spiel-container">
 				<p v-for="(spiel, idx) in tm('bash.spiel')" :key="idx">{{ spiel }}</p>
-				<styled-button :text="t('bash.interest_form')" />
 				<interest-form />
 			</div>
 		</template>
