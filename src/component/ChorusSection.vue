@@ -2,9 +2,30 @@
 import capitol from '@/assets/images/capitol-chords-duotone.jpg'
 import wibs from '@/assets/images/women-in-black-duotone.jpg'
 import ContentPage from '@/component/ContentPage.vue'
+import { onMounted, onUnmounted, useTemplateRef } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
+
+// Share the "Women in Black" photo's on-screen width as --chorus-photo-width, so the bash
+// carousel below can match it. The photo shrinks to fit the landing screen (object-fit: contain),
+// so its visible width depends on the window's height as well as its width.
+const wibsPhoto = useTemplateRef<HTMLImageElement>('wibsPhoto')
+function sharePhotoWidth() {
+	const img = wibsPhoto.value
+	if (!img?.naturalWidth) return
+	const box = img.getBoundingClientRect()
+	const width = Math.min(box.width, (box.height * img.naturalWidth) / img.naturalHeight)
+	document.documentElement.style.setProperty('--chorus-photo-width', `${width}px`)
+}
+const observer = new ResizeObserver(sharePhotoWidth)
+onMounted(() => {
+	if (wibsPhoto.value) observer.observe(wibsPhoto.value)
+})
+onUnmounted(() => {
+	observer.disconnect()
+	document.documentElement.style.removeProperty('--chorus-photo-width')
+})
 
 // Double down-arrow from the design, 29×36
 const arrowPaths = [
@@ -16,7 +37,7 @@ const arrowPaths = [
 <template>
 	<content-page id="chorus-view">
 		<template v-slot:left-column>
-			<img :src="wibs" alt="" class="chorus-photo" />
+			<img ref="wibsPhoto" :src="wibs" alt="" class="chorus-photo" @load="sharePhotoWidth" />
 			<h2 class="subtitle">
 				<a href="https://www.womeninblack.de/" target="_blank">
 					{{ t('chorus.wibs.title') }}

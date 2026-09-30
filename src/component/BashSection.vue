@@ -24,6 +24,7 @@ const photos = [majorsFromBajor, bariNice, oneNightFriends, trickiRicki]
 				cycle
 				interval="10000"
 				hide-delimiter-background
+				height="auto"
 			>
 				<v-carousel-item
 					v-for="photo in photos"
@@ -31,7 +32,8 @@ const photos = [majorsFromBajor, bariNice, oneNightFriends, trickiRicki]
 					transition="fade-transition"
 					reverse-transition="fade-transition"
 				>
-					<v-img :src="photo" />
+					<!-- eager: start loading as the slide mounts, not once it has faded in -->
+					<v-img :src="photo" cover height="100%" eager />
 				</v-carousel-item>
 			</v-carousel>
 		</template>
@@ -54,6 +56,18 @@ const photos = [majorsFromBajor, bariNice, oneNightFriends, trickiRicki]
 
 <style lang="scss">
 .calm-carousel {
+	// A 4:3 frame sized by the column instead of Vuetify's fixed 500px, so the text follows the
+	// photos directly on narrow screens; each photo fills the frame, cropped at the edges
+	aspect-ratio: 4 / 3;
+	// As wide as the "Women in Black" photo above (set by ChorusSection), centred like it
+	width: min(100%, var(--chorus-photo-width, 100%));
+	margin-inline: auto;
+
+	.v-window__container,
+	.v-window-item {
+		height: 100%;
+	}
+
 	// Stack the outgoing and incoming photos so they crossfade in place
 	.v-window-item {
 		transition-duration: 1.5s !important;
