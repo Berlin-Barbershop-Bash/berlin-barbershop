@@ -101,9 +101,9 @@
 	--content-button-text-size: 30px;
 	--content-button-line-height: 34px;
 
-	// The interest form popup: one text size throughout, its heading and submit button larger
-	--form-heading-size: 28px;
-	--form-heading-line-height: 34px;
+	// The interest form popup: one text size throughout; the heading as large as the button text
+	--form-heading-size: var(--content-button-text-size);
+	--form-heading-line-height: var(--content-button-line-height);
 	--form-text-size: 16px;
 	--form-line-height: 24px;
 

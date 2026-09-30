@@ -184,10 +184,10 @@ async function submit() {
 	color: var(--content-text-color) !important;
 	font-family: var(--content-text-font);
 
-	// The heading and the submit button share one style; all other text shares one size
-	// (sizes in main.scss). Vuetify's colours come from the site theme in main.ts.
-	.v-card-title,
-	.form-button {
+	// The heading matches the size of the buttons' text (the submit button is the page's own
+	// button style); all other text shares one size. Sizes in main.scss; Vuetify's colours come
+	// from the site theme in main.ts.
+	.v-card-title {
 		font-family: var(--header-text-font);
 		font-weight: var(--header-text-weight);
 		font-feature-settings: var(--font-feat-polymath);
@@ -234,16 +234,10 @@ async function submit() {
 		padding: 0 24px 24px;
 	}
 
-	.form-button {
-		padding: 4px 20px;
-	}
-
-	// Match the buttons: tan fill, aubergine outline on focus. The thin edge keeps the field
-	// visible against the popup (the fill alone is too close to the background, WCAG 1.4.11).
+	// Match the buttons: tan fill, aubergine outline on focus
 	.v-field {
 		background-color: var(--pale-ish-color);
 		border-radius: 0;
-		box-shadow: inset 0 0 0 1px var(--dark-color);
 	}
 
 	// Vuetify fades the placeholder label; keep it clearly readable (≥ 4.5:1)
