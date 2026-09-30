@@ -313,7 +313,7 @@ onUnmounted(stopMotion)
 
 		// "berlin barbershop bash" is about 11em wide; 8vw keeps it inside the window
 		font-size: min(var(--header-text-size), 8vw);
-		line-height: 1.24;
+		line-height: var(--header-line-ratio);
 
 		// The small ticker's pace: ~35px/s on desktop, ~26px/s on phones
 		--ticker-duration: 32s;

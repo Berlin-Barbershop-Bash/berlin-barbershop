@@ -20,6 +20,25 @@ const vuetify = createVuetify({
 	},
 	icons: { defaultSet: 'mdi', aliases, sets: { mdi } },
 	blueprint: md2,
+	// One light theme in the site's palette (keep in sync with the colours in main.scss), so Vuetify's
+	// fields, checkboxes and popups match the page instead of following the system's dark mode
+	theme: {
+		defaultTheme: 'barbershop',
+		themes: {
+			barbershop: {
+				dark: false,
+				colors: {
+					background: '#f6ebd6',
+					surface: '#f6ebd6',
+					'on-background': '#331528',
+					'on-surface': '#331528',
+					primary: '#331528',
+					secondary: '#331528',
+					error: '#331528',
+				},
+			},
+		},
+	},
 })
 
 // Translation

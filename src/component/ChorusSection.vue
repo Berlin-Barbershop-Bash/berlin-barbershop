@@ -41,8 +41,9 @@ onUnmounted(() => {
 		<template v-slot:left-column>
 			<img ref="wibsPhoto" :src="wibs" alt="" class="chorus-photo" @load="sharePhotoWidths" />
 			<h2 class="subtitle">
-				<a href="https://www.womeninblack.de/" target="_blank">
+				<a href="https://www.womeninblack.de/" target="_blank" rel="noopener">
 					{{ t('chorus.wibs.title') }}
+					<span class="visually-hidden">{{ t('a11y.new_tab') }}</span>
 				</a>
 			</h2>
 		</template>
@@ -55,8 +56,9 @@ onUnmounted(() => {
 				@load="sharePhotoWidths"
 			/>
 			<h2 class="subtitle">
-				<a href="https://capitalchords.de/" target="_blank">
+				<a href="https://capitalchords.de/" target="_blank" rel="noopener">
 					{{ t('chorus.capital.title') }}
+					<span class="visually-hidden">{{ t('a11y.new_tab') }}</span>
 				</a>
 			</h2>
 		</template>
@@ -83,7 +85,7 @@ onUnmounted(() => {
 	align-content: center;
 	// Columns fill their row so the photos shrink with it (and stay level side by side)
 	align-items: stretch;
-	gap: 24px;
+	gap: var(--column-gap);
 
 	@media screen and (max-width: 800px) {
 		grid-template-columns: 1fr;
@@ -116,7 +118,7 @@ onUnmounted(() => {
 	// "Women in Black" is the longest, at about 7.1em wide, so 13.5cqi leaves a little slack.
 	h2.subtitle {
 		font-size: min(var(--sub-header-text-size), 13.5cqi);
-		line-height: 1.24;
+		line-height: var(--header-line-ratio);
 		white-space: nowrap;
 	}
 

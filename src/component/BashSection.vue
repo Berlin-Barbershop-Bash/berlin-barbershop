@@ -6,9 +6,14 @@ import oneNightFriends from '@/assets/images/one-night-friends-duotone.jpg'
 import trickiRicki from '@/assets/images/tricki-ricki-duotone.jpg'
 import ContentPage from '@/component/ContentPage.vue'
 import InterestForm from '@/component/InterestForm.vue'
+import { motionStopped } from '@/motion'
+import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
+
+// Stays on the current photo while pointed at, or when motion is paused
+const hovered = ref(false)
 
 const photos = [majorsFromBajor, bariNice, oneNightFriends, trickiRicki]
 </script>
@@ -21,10 +26,12 @@ const photos = [majorsFromBajor, bariNice, oneNightFriends, trickiRicki]
 				class="calm-carousel"
 				hide-delimiters
 				:show-arrows="false"
-				cycle
+				:cycle="!motionStopped && !hovered"
 				interval="10000"
 				hide-delimiter-background
 				height="auto"
+				@mouseenter="hovered = true"
+				@mouseleave="hovered = false"
 			>
 				<v-carousel-item
 					v-for="photo in photos"
@@ -33,7 +40,7 @@ const photos = [majorsFromBajor, bariNice, oneNightFriends, trickiRicki]
 					reverse-transition="fade-transition"
 				>
 					<!-- eager: start loading as the slide mounts, not once it has faded in -->
-					<v-img :src="photo" cover height="100%" eager />
+					<v-img :src="photo" alt="" cover height="100%" eager />
 				</v-carousel-item>
 			</v-carousel>
 		</template>

@@ -10,6 +10,7 @@
 			"cta": "If that sounds like fun to you, sign up to show your interest!"
 		},
 		"schedule": {
+			"title": "Schedule",
 			"intro": "The detailed schedule is still under development, but we have a rough plan:",
 			"steps": [
 				"We will gather together to kickoff the event, randomly assign songs and singers, give the arrangers a chance to learn the singers' voices, and give the singers the chance to find a quartet formation that works for them.",
@@ -151,6 +152,11 @@
 		"error": "Something went wrong. Please try again."
 	},
 	"home": { "berlin": "Berlin", "barbershop": "Barbershop", "bash": "Bash" },
+	"a11y": {
+		"pause_motion": "Pause animations",
+		"play_motion": "Play animations",
+		"new_tab": "(opens in a new tab)"
+	},
 	"footer": {
 		"impressum": "Impressum",
 		"privacy": "Privacy Policy",

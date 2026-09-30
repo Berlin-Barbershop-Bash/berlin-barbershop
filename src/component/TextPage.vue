@@ -52,26 +52,31 @@ const { t } = useI18n()
 			outline: 3px solid var(--header-text-color);
 			outline-offset: -3px;
 		}
+
+		// The hover fill is the outline's colour, so switch the outline to stay visible
+		&:hover:focus-visible {
+			outline-color: var(--header-background-color);
+		}
 	}
 
 	.text-page-body {
 		// A readable line length, left-aligned with the home page's columns
-		max-width: calc(900px + 2 * 94px);
+		max-width: calc(900px + 2 * var(--page-gutter));
 		display: flex;
 		flex-flow: column nowrap;
 		gap: 16px;
 
 		@media screen and (min-width: 801px) {
-			padding: 64px 94px 96px;
+			padding: 64px var(--page-gutter) 96px;
 		}
 		@media screen and (max-width: 800px) {
-			padding: 48px 32px 64px;
+			padding: 48px var(--page-gutter) 64px;
 		}
-		// Large screens: the same left column as the home page's two-column sections
-		// (94px side padding, 24px gap, so each column is half of what's left: 50% + 82px with padding)
+		// Large screens: the same left column as the home page's two-column sections, whose
+		// columns are half the row less half the gap; the width here includes the side padding
 		@media screen and (min-width: 1200px) {
 			max-width: none;
-			width: calc(50% + 82px);
+			width: calc(50% - var(--column-gap) / 2 + var(--page-gutter));
 		}
 	}
 

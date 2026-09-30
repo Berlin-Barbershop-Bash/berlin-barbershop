@@ -1,12 +1,15 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { PHONE_MAX_WIDTH } from '@/breakpoints'
+import { computed, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
 import { useDisplay } from 'vuetify'
 
 const { t } = useI18n()
-// Full screen without the zoom animation on phones; a centred popup elsewhere
-const { smAndDown } = useDisplay()
+// Full screen without the zoom animation on phones (the site's phone layout, not Vuetify's
+// breakpoint); a centred popup elsewhere
+const { width } = useDisplay()
+const phone = computed(() => width.value <= PHONE_MAX_WIDTH)
 
 // Keep in sync with ROLES and DATES in functions/api/interest.ts
 const roleOptions = ['singer', 'arranger', 'swing']
@@ -60,8 +63,9 @@ async function submit() {
 		v-model="open"
 		max-width="560"
 		scrollable
-		:fullscreen="smAndDown"
-		:transition="smAndDown ? false : undefined"
+		:fullscreen="phone"
+		:transition="phone ? false : undefined"
+		aria-labelledby="interest-form-title"
 	>
 		<template #activator="{ props: activatorProps }">
 			<button v-bind="activatorProps" type="button" class="form-button">
@@ -71,7 +75,7 @@ async function submit() {
 
 		<v-card class="interest-form">
 			<v-card-title>
-				{{ t('bash.interest_form') }}
+				<span id="interest-form-title">{{ t('bash.interest_form') }}</span>
 				<button
 					type="button"
 					class="close-button"
@@ -83,7 +87,7 @@ async function submit() {
 			</v-card-title>
 
 			<v-card-text v-if="status === 'sent'">
-				<p>{{ t('form.thanks') }}</p>
+				<p role="status">{{ t('form.thanks') }}</p>
 			</v-card-text>
 
 			<v-form v-else v-model="valid" @submit.prevent="submit">
@@ -96,6 +100,7 @@ async function submit() {
 						flat
 						type="email"
 						autocomplete="email"
+						required
 					/>
 
 					<fieldset>
@@ -124,7 +129,7 @@ async function submit() {
 						/>
 					</fieldset>
 
-					<p v-if="status === 'error'" class="error">{{ t('form.error') }}</p>
+					<p v-if="status === 'error'" class="error" role="alert">{{ t('form.error') }}</p>
 				</v-card-text>
 
 				<v-card-actions>
@@ -179,22 +184,8 @@ async function submit() {
 	color: var(--content-text-color) !important;
 	font-family: var(--content-text-font);
 
-	// Tint Vuetify's fields, checkboxes and errors with --dark-color (#331528) instead of theme colors.
-	// Each Vuetify input re-applies its theme class, so override there too.
-	&,
-	.v-theme--dark {
-		--v-theme-primary: 51, 21, 40;
-		--v-theme-secondary: 51, 21, 40;
-		--v-theme-error: 51, 21, 40;
-		--v-theme-on-surface: 51, 21, 40;
-	}
-
 	// The heading and the submit button share one style; all other text shares one size
-	--form-heading-size: 28px;
-	--form-heading-line-height: 34px;
-	--form-text-size: 16px;
-	--form-line-height: 24px;
-
+	// (sizes in main.scss). Vuetify's colours come from the site theme in main.ts.
 	.v-card-title,
 	.form-button {
 		font-family: var(--header-text-font);
@@ -247,10 +238,17 @@ async function submit() {
 		padding: 4px 20px;
 	}
 
-	// Match the buttons: tan fill, aubergine outline on focus
+	// Match the buttons: tan fill, aubergine outline on focus. The thin edge keeps the field
+	// visible against the popup (the fill alone is too close to the background, WCAG 1.4.11).
 	.v-field {
 		background-color: var(--pale-ish-color);
 		border-radius: 0;
+		box-shadow: inset 0 0 0 1px var(--dark-color);
+	}
+
+	// Vuetify fades the placeholder label; keep it clearly readable (≥ 4.5:1)
+	.v-field-label {
+		opacity: 0.8;
 	}
 
 	.v-field--focused {

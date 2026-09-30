@@ -15,6 +15,7 @@ const maxColumns = () => (steps().length % 3 === 0 ? 3 : 2)
 <template>
 	<content-page id="bash-schedule" class="bash-details">
 		<div class="spiel-container">
+			<h2 class="visually-hidden">{{ t('bash.schedule.title') }}</h2>
 			<p>{{ t('bash.schedule.intro') }}</p>
 			<ol class="schedule-steps" :style="{ '--max-columns': maxColumns() }">
 				<li v-for="(step, idx) in steps()" :key="idx">
@@ -85,18 +86,18 @@ const maxColumns = () => (steps().length % 3 === 0 ? 3 : 2)
 
 		display: grid;
 		// At least 420px per column, and never narrower than 1/--max-columns of the row
-		--column-gap: 48px;
+		--step-gap: 48px;
 		grid-template-columns: repeat(
 			auto-fit,
 			minmax(
 				max(
 					min(100%, 420px),
-					calc((100% - (var(--max-columns) - 1) * var(--column-gap)) / var(--max-columns))
+					calc((100% - (var(--max-columns) - 1) * var(--step-gap)) / var(--max-columns))
 				),
 				1fr
 			)
 		);
-		gap: 32px var(--column-gap);
+		gap: 32px var(--step-gap);
 
 		li {
 			counter-increment: step;
@@ -119,6 +120,9 @@ const maxColumns = () => (steps().length % 3 === 0 ? 3 : 2)
 
 // The page's last section: room to breathe before the footer
 #bash-faq {
+	// The first question sits on the "faq" heading's baseline
+	align-items: baseline;
+
 	@media screen and (min-width: 801px) {
 		padding-bottom: 128px;
 	}
@@ -136,16 +140,20 @@ const maxColumns = () => (steps().length % 3 === 0 ? 3 : 2)
 	flex-flow: column nowrap;
 	gap: 16px;
 
+	// The arrow sits in the item's left padding, out of the text flow, so each item's (and the
+	// list's) baseline is its text's; that lets the list line up with the heading's baseline
 	li {
-		display: flex;
-		gap: 0.6em;
+		position: relative;
+		font-size: var(--content-text-size);
+		padding-inline-start: calc(0.5em + 10px);
 	}
 
 	// The design's double arrow, turned to point at the text; one line tall so it sits on the first line
 	.faq-bullet {
-		flex: none;
+		position: absolute;
+		inset-inline-start: 0;
+		top: 0;
 		// Same size as the arrows in the chorus line (0.6em of the body text)
-		font-size: var(--content-text-size);
 		height: var(--content-line-height);
 		display: flex;
 		align-items: center;

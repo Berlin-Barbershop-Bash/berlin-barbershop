@@ -4,6 +4,7 @@ import BashSection from '@/component/BashSection.vue'
 import ChorusSection from '@/component/ChorusSection.vue'
 import CollapsedHeader from '@/component/CollapsedHeader.vue'
 import LanguageMenu from '@/component/LanguageMenu.vue'
+import MotionToggle from '@/component/MotionToggle.vue'
 import StickyHeader from '@/component/StickyHeader.vue'
 import TickerBar from '@/component/TickerBar.vue'
 import { onMounted, onUnmounted, ref, useTemplateRef } from 'vue'
@@ -42,16 +43,27 @@ onUnmounted(() => {
 
 <template>
 	<language-menu />
-	<sticky-header ref="berlinHeader" :text="t('home.berlin')" :index="0" :collapsed="headersHidden" />
+	<sticky-header
+		ref="berlinHeader"
+		:text="t('home.berlin')"
+		:index="0"
+		:level="1"
+		:collapsed="headersHidden"
+	/>
 	<div class="landing-fill">
-		<ticker-bar v-slot="{ copy }">
-			<i18n-t keypath="bash.ticker" scope="global">
-				<template #link>
-					<router-link :to="{ hash: '#interest-form' }" :tabindex="copy ? -1 : undefined">
-						{{ t('bash.ticker_link') }}
-					</router-link>
-				</template>
-			</i18n-t>
+		<ticker-bar>
+			<template #default="{ copy }">
+				<i18n-t keypath="bash.ticker" scope="global">
+					<template #link>
+						<router-link :to="{ hash: '#interest-form' }" :tabindex="copy ? -1 : undefined">
+							{{ t('bash.ticker_link') }}
+						</router-link>
+					</template>
+				</i18n-t>
+			</template>
+			<template #end>
+				<motion-toggle />
+			</template>
 		</ticker-bar>
 		<chorus-section />
 	</div>
@@ -89,7 +101,7 @@ onUnmounted(() => {
 	}
 }
 
-h1.title,
+.title,
 h2.subtitle {
 	font-family: var(--header-text-font);
 	font-weight: var(--header-text-weight);

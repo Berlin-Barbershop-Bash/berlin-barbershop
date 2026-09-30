@@ -25,14 +25,8 @@ defineProps<{ id: string }>()
 	flex-flow: row wrap;
 	align-items: center;
 	justify-content: center;
-	gap: 24px;
-
-	@media screen and (min-width: 801px) {
-		padding: 32px 94px;
-	}
-	@media screen and (max-width: 800px) {
-		padding: 32px;
-	}
+	gap: var(--column-gap);
+	padding: 32px var(--page-gutter);
 
 	p {
 		font-family: var(--content-text-font);
@@ -56,7 +50,7 @@ defineProps<{ id: string }>()
 
 	div.content-page-left {
 		@media screen and (min-width: 801px) {
-			width: calc(50% - 12px);
+			width: calc(50% - var(--column-gap) / 2);
 		}
 		@media screen and (max-width: 800px) {
 			width: 100%;
@@ -69,7 +63,7 @@ defineProps<{ id: string }>()
 
 	div.content-page-right {
 		@media screen and (min-width: 801px) {
-			width: calc(50% - 12px);
+			width: calc(50% - var(--column-gap) / 2);
 		}
 		@media screen and (max-width: 800px) {
 			width: 100%;

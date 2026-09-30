@@ -28,7 +28,7 @@ const socialLinks = [
 					:href="link.href"
 					target="_blank"
 					rel="noopener"
-					:aria-label="t(link.key)"
+					:aria-label="`${t(link.key)} ${t('a11y.new_tab')}`"
 					:title="t(link.key)"
 				>
 					<v-icon :icon="link.icon" aria-hidden="true" />
@@ -56,7 +56,7 @@ const socialLinks = [
 
 	// Plenty of room: the page ends here
 	@media screen and (min-width: 801px) {
-		padding: 96px 94px;
+		padding: 96px var(--page-gutter);
 	}
 
 	.footer-legal,
@@ -97,7 +97,7 @@ const socialLinks = [
 		flex-flow: column nowrap;
 		align-items: center;
 		gap: 20px;
-		padding: 64px 32px;
+		padding: 64px var(--page-gutter);
 
 		.footer-legal {
 			flex-flow: column nowrap;
