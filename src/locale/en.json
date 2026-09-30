@@ -1,19 +1,44 @@
 {
 	"bash": {
 		"menu": "The Bash",
-		"spiel": [
-			"After the success of the first Berlin Barbershop Bash, we will be holding a second in 2027!",
-			"We will test out a 48-hour format in 2027, and look forward to seeing how the longer deadline shapes the event.",
-			"We appreciate your patience as we work to plan this event.",
-			"If you're interested in joining us, please fill out our interest form and sign up for our newsletter below!"
-		],
 		"interest_form": "Interest Form",
-		"ticker": "Happening again next year!"
+		"ticker": "Happening again in 2027! Fill out our {link} to get updates.",
+		"ticker_link": "interest form",
+		"welcome": {
+			"title": "Welcome to the Berlin Barbershop Bash!",
+			"body": "A two-day event where we randomly match singers, songs, and arrangers; the arrangers have a day to write an arrangement, and the singers have a day to put the arrangement on its feet, and then we have a concert together in the evening. You can come as a quartet, or as individual singers to form a scratch quartet on the spot.",
+			"cta": "If that sounds like fun to you, sign up to show your interest!"
+		},
+		"schedule": {
+			"title": "Schedule",
+			"intro": "The detailed schedule is still under development, but we have a rough plan:",
+			"steps": [
+				"We will gather together to kickoff the event, randomly assign songs and singers, give the arrangers a chance to learn the singers' voices, and give the singers the chance to find a quartet formation that works for them.",
+				"This year, we plan to have a couple of songs for each arranger and quartet to choose from. We'll have prepared leadsheets (melody and original chords) and 1:30–2:00 cuts. Cutting down the song to approximately that length is mandatory, but you don't have to use the exact cut we'll suggest.",
+				"Arrangers will gather together to arrange their music. There will be opportunity for arrangers to solicit or give feedback for work in progress during the night of arranging, which was a lot of fun last year.",
+				"While the arrangers do their thing, the singers will head out on a scavenger hunt across Berlin, most of which will involve sending in clips of singing tags in varying locations or circumstances.",
+				"In the evening, after a day of arranging and tagging, we'll exchange music. There'll be an opportunity for feedback from the singers and last-minute edits as the singers have the evening to individually learn their parts.",
+				"After that, much-needed rest all around, a day of rehearsal, and then we have ourselves a concert!"
+			],
+			"outro": "Further details, including timing, venue, costs, etc, to be determined. If you have any questions, please reach out to our team at {email}"
+		},
+		"faq": {
+			"title": "FAQ",
+			"items": [
+				"Singers may use sheet music as needed for the concert",
+				"Arrangers may not also participate as singers",
+				"The concert is open to friends and family, but not the general public",
+				"The goal is to arrange and perform a piece of any length; if the arranger writes a single chorus or a tag, the singers have that much more time to polish it :)",
+				"Yes, there will probably be arranging pancakes again"
+			]
+		}
 	},
 	"chorus": {
 		"menu": "Choruses",
-		"capitol": { "title": "Capitol Chords" },
-		"wibs": { "title": "Women in Black" }
+		"capital": { "title": "Capital Chords" },
+		"wibs": { "title": "Women in Black" },
+		"cohosting": "are co-hosting the {bash}",
+		"cohosting_bash": "bash"
 	},
 	"hair": {
 		"title": "Looking for a Barber Shop?",
@@ -22,5 +47,120 @@
 			"Come hear us sometime!"
 		]
 	},
-	"home": { "berlin": "Berlin", "barbershop": "Barbershop", "bash": "Bash" }
+	"impressum": {
+		"title": "Impressum",
+		"sections": [
+			{
+				"body": [
+					"The Berlin Barbershop Bash is hosted by Capital Chords e.V."
+				]
+			},
+			{
+				"body": [
+					"Capital Chords e.V.\nc/o Andreas Hundacker\nJanow-Podlaski-Str. 15\n16540 Hohen Neuendorf\nGermany"
+				],
+				"lines": true
+			},
+			{
+				"title": "Contact",
+				"body": [
+					"Email: {email}"
+				]
+			},
+			{
+				"title": "Authorised representative",
+				"body": [
+					"1st Chair (1. Vorsitzender):\nAndreas Hundacker\nJanow-Podlaski-Str. 15\n16540 Hohen Neuendorf"
+				],
+				"lines": true
+			},
+			{
+				"title": "Register",
+				"body": [
+					"Register court: Amtsgericht Charlottenburg\nRegister number: VR 41010 B"
+				],
+				"lines": true
+			},
+			{
+				"title": "Responsible for content",
+				"body": [
+					"Responsible under § 18 (2) MStV: Andreas Hundacker, Janow-Podlaski-Str. 15, 16540 Hohen Neuendorf"
+				]
+			}
+		]
+	},
+	"privacy": {
+		"title": "Privacy Policy",
+		"sections": [
+			{
+				"body": [
+					"We keep this simple: we collect as little as we can, and only what we need to organise the Bash."
+				]
+			},
+			{
+				"title": "Who we are",
+				"body": [
+					"Capital Chords e.V., c/o Andreas Hundacker, Janow-Podlaski-Str. 15, 16540 Hohen Neuendorf, Germany. You can reach us at {email}."
+				]
+			},
+			{
+				"title": "Visiting the site",
+				"body": [
+					"There are no cookies, analytics or tracking here. The site is served by Cloudflare, whose servers need your IP address and browser details to send you the pages (Art. 6(1)(f) GDPR). We don't keep or look at any of it."
+				]
+			},
+			{
+				"title": "Interest form",
+				"body": [
+					"If you fill out the interest form, we store your email address and your answers: how you'd like to take part and which dates work for you. That's all. We use them only to contact you about the Bash, and delete them when you ask us to or once we no longer need them. They're stored with Cloudflare in Western Europe.",
+					"By sending the form you agree to this (Art. 6(1)(a) GDPR). You can change your mind at any time by emailing us."
+				]
+			},
+			{
+				"title": "Email and social media",
+				"body": [
+					"If you email us, we use your message only to reply. Our Instagram and Facebook links are plain links: nothing is shared with them unless you follow one."
+				]
+			},
+			{
+				"title": "Your rights",
+				"body": [
+					"You can ask us at any time what we have stored about you, and have it corrected or deleted (Art. 15–21 GDPR). Just email {email}. You can also complain to a data protection authority."
+				]
+			}
+		]
+	},
+	"form": {
+		"email": "Email",
+		"email_invalid": "Please enter a valid email address",
+		"roles_question": "How would you be interested in participating?",
+		"roles": {
+			"singer": "Singer",
+			"arranger": "Arranger",
+			"swing": "Swing (Coach, Backup Singer, Mock Judge as needed)"
+		},
+		"dates_question": "What dates might work for you?",
+		"dates": {
+			"aug-20-22": "Aug 20–22",
+			"aug-27-29": "Aug 27–29",
+			"sep-3-5": "Sep 3–5",
+			"sep-10-12": "Sep 10–12"
+		},
+		"submit": "Keep me posted!",
+		"close": "Close",
+		"thanks": "Thanks! We'll be in touch.",
+		"error": "Something went wrong. Please try again."
+	},
+	"home": { "berlin": "Berlin", "barbershop": "Barbershop", "bash": "Bash" },
+	"a11y": {
+		"pause_motion": "Pause animations",
+		"play_motion": "Play animations",
+		"new_tab": "(opens in a new tab)"
+	},
+	"footer": {
+		"impressum": "Impressum",
+		"privacy": "Privacy Policy",
+		"instagram": "Instagram",
+		"facebook": "Facebook"
+	}
 }
