@@ -78,18 +78,19 @@ onUnmounted(() => {
 <style lang="scss">
 #chorus-view {
 	// A grid whose photo rows can shrink to nothing, so the whole block fits
-	// between "berlin" and "barbershop" (see .landing-fill in HomeView)
+	// between "berlin" and "barbershop" (see .landing-fill in HomeView). The photo rows take
+	// all the spare height, which leaves the co-hosting line at the bottom, just above
+	// "barbershop": a cue that there's more below.
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	grid-template-rows: minmax(0, max-content) auto;
-	align-content: center;
+	grid-template-rows: minmax(0, 1fr) auto;
 	// Columns fill their row so the photos shrink with it (and stay level side by side)
 	align-items: stretch;
 	gap: var(--column-gap);
 
 	@media screen and (max-width: 800px) {
 		grid-template-columns: 1fr;
-		grid-template-rows: minmax(0, max-content) minmax(0, max-content) auto;
+		grid-template-rows: minmax(0, 1fr) minmax(0, 1fr) auto;
 	}
 
 	.content-page-left,
@@ -100,6 +101,8 @@ onUnmounted(() => {
 
 		display: flex;
 		flex-flow: column nowrap;
+		// Photo and heading sit centred in whatever height the row has
+		justify-content: center;
 	}
 
 	.content-page-full {
