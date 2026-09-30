@@ -38,7 +38,7 @@ const photos = [majorsFromBajor, bariNice, oneNightFriends, trickiRicki]
 			</v-carousel>
 		</template>
 		<template v-slot:right-column>
-			<div class="spiel-container">
+			<div class="spiel-container welcome-container">
 				<h2 class="subtitle">{{ t('bash.welcome.title') }}</h2>
 				<p>{{ t('bash.welcome.body') }}</p>
 				<i18n-t tag="p" keypath="bash.welcome.cta" scope="global">
@@ -55,12 +55,21 @@ const photos = [majorsFromBajor, bariNice, oneNightFriends, trickiRicki]
 </template>
 
 <style lang="scss">
+// Two columns: the welcome text keeps to the "Capital Chords" photo's width above it, centred like
+// the photo. (Stacked on phones it keeps the full width, as the photos may shrink to fit the screen.)
+@media screen and (min-width: 801px) {
+	.welcome-container {
+		width: min(100%, var(--chorus-right-photo-width, 100%));
+		margin-inline: auto;
+	}
+}
+
 .calm-carousel {
 	// A 4:3 frame sized by the column instead of Vuetify's fixed 500px, so the text follows the
 	// photos directly on narrow screens; each photo fills the frame, cropped at the edges
 	aspect-ratio: 4 / 3;
 	// As wide as the "Women in Black" photo above (set by ChorusSection), centred like it
-	width: min(100%, var(--chorus-photo-width, 100%));
+	width: min(100%, var(--chorus-left-photo-width, 100%));
 	margin-inline: auto;
 
 	.v-window__container,

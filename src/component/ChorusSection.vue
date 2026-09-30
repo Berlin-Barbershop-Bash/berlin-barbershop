@@ -8,24 +8,30 @@ import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 
-// Share the "Women in Black" photo's on-screen width as --chorus-photo-width, so the bash
-// carousel below can match it. The photo shrinks to fit the landing screen (object-fit: contain),
-// so its visible width depends on the window's height as well as its width.
-const wibsPhoto = useTemplateRef<HTMLImageElement>('wibsPhoto')
-function sharePhotoWidth() {
-	const img = wibsPhoto.value
-	if (!img?.naturalWidth) return
-	const box = img.getBoundingClientRect()
-	const width = Math.min(box.width, (box.height * img.naturalWidth) / img.naturalHeight)
-	document.documentElement.style.setProperty('--chorus-photo-width', `${width}px`)
+// Share each photo's on-screen width as --chorus-left-photo-width / --chorus-right-photo-width, so
+// the bash section below can line up with them (carousel left, welcome text right). The photos
+// shrink to fit the landing screen (object-fit: contain), so their visible widths depend on the
+// window's height as well as its width.
+const photos = {
+	'--chorus-left-photo-width': useTemplateRef<HTMLImageElement>('wibsPhoto'),
+	'--chorus-right-photo-width': useTemplateRef<HTMLImageElement>('capitalPhoto'),
 }
-const observer = new ResizeObserver(sharePhotoWidth)
+function sharePhotoWidths() {
+	for (const [property, photo] of Object.entries(photos)) {
+		const img = photo.value
+		if (!img?.naturalWidth) continue
+		const box = img.getBoundingClientRect()
+		const width = Math.min(box.width, (box.height * img.naturalWidth) / img.naturalHeight)
+		document.documentElement.style.setProperty(property, `${width}px`)
+	}
+}
+const observer = new ResizeObserver(sharePhotoWidths)
 onMounted(() => {
-	if (wibsPhoto.value) observer.observe(wibsPhoto.value)
+	for (const photo of Object.values(photos)) if (photo.value) observer.observe(photo.value)
 })
 onUnmounted(() => {
 	observer.disconnect()
-	document.documentElement.style.removeProperty('--chorus-photo-width')
+	for (const property of Object.keys(photos)) document.documentElement.style.removeProperty(property)
 })
 
 </script>
@@ -33,7 +39,7 @@ onUnmounted(() => {
 <template>
 	<content-page id="chorus-view">
 		<template v-slot:left-column>
-			<img ref="wibsPhoto" :src="wibs" alt="" class="chorus-photo" @load="sharePhotoWidth" />
+			<img ref="wibsPhoto" :src="wibs" alt="" class="chorus-photo" @load="sharePhotoWidths" />
 			<h2 class="subtitle">
 				<a href="https://www.womeninblack.de/" target="_blank">
 					{{ t('chorus.wibs.title') }}
@@ -41,7 +47,13 @@ onUnmounted(() => {
 			</h2>
 		</template>
 		<template v-slot:right-column>
-			<img :src="capital" alt="" class="chorus-photo" />
+			<img
+				ref="capitalPhoto"
+				:src="capital"
+				alt=""
+				class="chorus-photo"
+				@load="sharePhotoWidths"
+			/>
 			<h2 class="subtitle">
 				<a href="https://capitalchords.de/" target="_blank">
 					{{ t('chorus.capital.title') }}
