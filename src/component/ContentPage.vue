@@ -22,9 +22,14 @@ defineProps<{ id: string }>()
 	flex-flow: row wrap;
 	align-items: center;
 	justify-content: center;
-
-	padding: 32px 94px;
 	gap: 24px;
+
+	@media screen and (min-width: 801px) {
+		padding: 32px 94px;
+	}
+	@media screen and (max-width: 800px) {
+		padding: 32px;
+	}
 
 	p {
 		font-family: var(--content-text-font);
@@ -47,19 +52,19 @@ defineProps<{ id: string }>()
 	}
 
 	div.content-page-left {
-		@media screen and (min-width: 800px) {
+		@media screen and (min-width: 801px) {
 			width: calc(50% - 12px);
 		}
-		@media screen and (max-width: 799px) {
+		@media screen and (max-width: 800px) {
 			width: 100%;
 		}
 	}
 
 	div.content-page-right {
-		@media screen and (min-width: 800px) {
+		@media screen and (min-width: 801px) {
 			width: calc(50% - 12px);
 		}
-		@media screen and (max-width: 799px) {
+		@media screen and (max-width: 800px) {
 			width: 100%;
 		}
 	}
