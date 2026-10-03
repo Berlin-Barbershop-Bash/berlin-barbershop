@@ -7,7 +7,9 @@ export const prefersReducedMotion = ref(reduceQuery.matches)
 reduceQuery.addEventListener('change', (e) => (prefersReducedMotion.value = e.matches))
 
 export const motionPausedByVisitor = ref(false)
-export const motionStopped = computed(() => prefersReducedMotion.value || motionPausedByVisitor.value)
+export const motionStopped = computed(
+	() => prefersReducedMotion.value || motionPausedByVisitor.value,
+)
 
 // CSS animations (the tickers) pause under this class
 watchEffect(() => document.documentElement.classList.toggle('motion-paused', motionStopped.value))

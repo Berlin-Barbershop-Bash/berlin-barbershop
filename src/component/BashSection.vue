@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 import bariNice from '@/assets/images/bari-nice-to-meet-you-duotone-cropped.jpg'
 import majorsFromBajor from '@/assets/images/majors-from-bajor-duotone.jpg'
 import oneNightFriends from '@/assets/images/one-night-friends-duotone.jpg'

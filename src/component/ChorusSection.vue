@@ -31,9 +31,9 @@ onMounted(() => {
 })
 onUnmounted(() => {
 	observer.disconnect()
-	for (const property of Object.keys(photos)) document.documentElement.style.removeProperty(property)
+	for (const property of Object.keys(photos))
+		document.documentElement.style.removeProperty(property)
 })
-
 </script>
 
 <template>
@@ -48,13 +48,7 @@ onUnmounted(() => {
 			</h2>
 		</template>
 		<template v-slot:right-column>
-			<img
-				ref="capitalPhoto"
-				:src="capital"
-				alt=""
-				class="chorus-photo"
-				@load="sharePhotoWidths"
-			/>
+			<img ref="capitalPhoto" :src="capital" alt="" class="chorus-photo" @load="sharePhotoWidths" />
 			<h2 class="subtitle">
 				<a href="https://capitalchords.de/" target="_blank" rel="noopener">
 					{{ t('chorus.capital.title') }}
@@ -65,11 +59,14 @@ onUnmounted(() => {
 		<template v-slot:full-width>
 			<!-- Word joiners (&#8288;) keep the arrows on the same line as the text next to them -->
 			<p class="cohost-line">
-				<double-arrow class="cohost-arrow" />&#8288;<i18n-t keypath="chorus.cohosting" scope="global">
+				<double-arrow class="cohost-arrow" />&#8288;<i18n-t
+					keypath="chorus.cohosting"
+					scope="global"
+				>
 					<template #bash>
 						<em>{{ t('chorus.cohosting_bash') }}</em>
-					</template>
-				</i18n-t>&#8288;<double-arrow class="cohost-arrow" />
+					</template> </i18n-t
+				>&#8288;<double-arrow class="cohost-arrow" />
 			</p>
 		</template>
 	</content-page>
