@@ -116,6 +116,8 @@ async function submit() {
 						/>
 					</fieldset>
 
+					<p>{{ t('form.tentative_dates') }}</p>
+
 					<div class="question">
 						<label for="interest-form-events">{{ t('form.events_question') }}</label>
 						<v-text-field

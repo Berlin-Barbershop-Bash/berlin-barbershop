@@ -50,19 +50,14 @@
 	"impressum": {
 		"title": "Impressum",
 		"sections": [
-			{
-				"body": ["The Berlin Barbershop Bash is hosted by Capital Chords e.V."]
-			},
+			{ "body": ["The Berlin Barbershop Bash is hosted by Capital Chords e.V."] },
 			{
 				"body": [
 					"Capital Chords e.V.\nc/o Andreas Hundacker\nJanow-Podlaski-Str. 15\n16540 Hohen Neuendorf\nGermany"
 				],
 				"lines": true
 			},
-			{
-				"title": "Contact",
-				"body": ["Email: {email}"]
-			},
+			{ "title": "Contact", "body": ["Email: {email}"] },
 			{
 				"title": "Authorised representative",
 				"body": [
@@ -131,9 +126,10 @@
 		"roles": {
 			"singer": "Singer",
 			"arranger": "Arranger",
-			"swing": "Swing (Coach, Backup Singer, Mock Judge as needed)"
+			"swing": "Swing (coach / singer / arranger as needed)"
 		},
-		"events_question": "To avoid potential conflicts: which barbershop events do you plan on attending in 2027?",
+		"tentative_dates": "Tentatively, we are planning on the weekends of May 21–22, May 28–29, or April 16–17. We will announce the exact date once we have a commitment from a venue.",
+		"events_question": "To avoid potential conflicts: Which other barbershop events do you plan on attending in 2027?",
 		"events_placeholder": "e.g. BHS Convention, Harmony College",
 		"submit": "Keep me posted!",
 		"close": "Close",
