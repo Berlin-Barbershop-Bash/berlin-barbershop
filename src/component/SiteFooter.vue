@@ -9,7 +9,11 @@ const legalLinks = [
 ]
 // FIXME: real addresses for the social profiles
 const socialLinks = [
-	{ key: 'footer.instagram', href: 'https://www.instagram.com/FIXME', icon: 'mdi-instagram' },
+	{
+		key: 'footer.instagram',
+		href: 'https://www.instagram.com/berlinbarbershopbash',
+		icon: 'mdi-instagram',
+	},
 	{ key: 'footer.facebook', href: 'https://www.facebook.com/FIXME', icon: 'mdi-facebook' },
 ]
 </script>
