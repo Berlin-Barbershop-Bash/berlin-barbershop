@@ -9,7 +9,11 @@ const legalLinks = [
 ]
 // FIXME: real addresses for the social profiles
 const socialLinks = [
-	{ key: 'footer.instagram', href: 'https://www.instagram.com/FIXME', icon: 'mdi-instagram' },
+	{
+		key: 'footer.instagram',
+		href: 'https://www.instagram.com/berlinbarbershopbash',
+		icon: 'mdi-instagram',
+	},
 	{ key: 'footer.facebook', href: 'https://www.facebook.com/FIXME', icon: 'mdi-facebook' },
 ]
 </script>
@@ -22,7 +26,7 @@ const socialLinks = [
 			</router-link>
 		</nav>
 		<ul class="footer-social">
-			<li v-for="link in socialLinks" :key="link.key">
+			<li v-for="link in socialLinks.filter((l) => !l.href.includes('FIXME'))" :key="link.key">
 				<!-- Icon only; the name is still read out and shown on hover -->
 				<a
 					:href="link.href"
