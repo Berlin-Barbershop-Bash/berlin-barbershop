@@ -26,7 +26,7 @@ const socialLinks = [
 			</router-link>
 		</nav>
 		<ul class="footer-social">
-			<li v-for="link in socialLinks" :key="link.key">
+			<li v-for="link in socialLinks.filter((l) => !l.href.includes('FIXME'))" :key="link.key">
 				<!-- Icon only; the name is still read out and shown on hover -->
 				<a
 					:href="link.href"
